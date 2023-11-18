@@ -1,0 +1,45 @@
+.boxflex  .boxAPM{
+    background: #fffdfd;
+    width: 600px;
+    max-height: 340px;
+    border-radius: 30px;
+    padding: 10px;
+    box-shadow: 0 3px 4px 1px rgba(159, 162, 177, 0.8);
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.boxflex .p{
+    position: relative;
+    display: inline-flex;
+    font-size: 20px;
+    color: #4682A9;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.boxflex .addnew{
+    font-size: 14px;
+    width: 120px;
+    height: 22px;
+    margin-left: 15px;
+    margin-top: 5px;
+    background: #F1C376;
+    border-radius: 20px;
+    display: flex;/*30-32ทำให้อยู่ตรงกลาง*/
+    align-items: center;
+    justify-content: center;
+    color: #fefcfc;
+
+}
+
+.boxflex .section{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    margin-left: 25px;
+    font-size: 15px;
+    font-weight: 100;
+    font-weight: bold;
+    color: #4682A9;
+}
+

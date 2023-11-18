@@ -1,0 +1,79 @@
+.tabbarclinic{
+    position: fixed;/*ตามติดตลอด*/
+    height: 5rem;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FFFFFF;
+    box-sizing: border-box;/*ทำให้ขนาดกล่องเท่าwidthเป๊ะโดยไม่ไปบวกpaddigเพิ่ม*/
+    box-shadow: 0 5px 5px rgba(159, 162, 177, 0.8);
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    z-index: 10;
+}
+
+.logo{
+    height: 3rem;
+    width: auto;
+    margin-left: 4rem;
+    margin-top: 0.5rem;
+}
+
+.gridclinic{
+    display: flex;/*เลียงเป็นแถวห่างเท่ากัน3บ*/
+    align-items: center;
+    gap: 20px;
+}
+
+.gridclinic button.profile {
+    min-width: max-content;/*ทำให้กริดขนาดเท่าตัวอักษรข้างใน*/
+    background: #A0C49D;
+    border-radius: 10px;
+    color: #ffffff;
+}
+
+.gridclinic button.appinment{
+    min-width: max-content;
+    background: #E1ECC8;
+    border-radius: 10px;
+    color: #ffffff;
+    
+}
+
+.gridclinic button.home{
+    left: 30px;
+}
+
+.gridclinic button{
+    position: relative;
+    display: flex;/*ทำให้อยู่ตรงกลางเส้นเดียวกัน*/
+    align-items: center;
+    border: none;
+    background: none;
+    font-size: 12px;
+    width: 110px;
+    height: 30px;
+    color: #4682A9;
+}
+
+.gridclinic button:hover{/*ดักจับเหต์การเมื่อเอาเมาส์วาง*/
+    transform: scale(0.98);/*ย่อเมื่อเมาส์วางดูรูปแบบจากtiktok*/   
+
+}
+
+.gridclinic button:active {/*ดักจับเหต์การเมื่อกด*/
+    transform: scale(0.995);
+  }
+
+.imgtab{
+    margin-left: 5px;
+    margin-right: 6px;/*ระยะห่างรูปกับข้้อความ*/
+    width: auto;
+    height: 18px;
+    border-radius: 0;
+    
+}
+ 

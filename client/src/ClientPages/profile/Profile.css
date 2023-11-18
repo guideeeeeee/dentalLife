@@ -1,0 +1,8 @@
+.profile .flex{
+  position: relative;
+  top: 7rem;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  
+}

@@ -1,0 +1,47 @@
+.login-btn{
+    margin-top: 20px;
+    display: flex;
+    background-color: #769FCD;
+    border: 0;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+.login{
+    display: flex;
+}
+.wholepage{
+    display: flex;
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+    background-image:url("./introPage.svg");
+    width: 100vw;
+    height: 100vh;
+    
+}
+.page{
+    margin-top: 10%;
+    margin-left: 10%;
+}
+.title {
+    display: flex;
+    text-align: left;
+    font-size: 40px;
+    font-weight: bold;
+    color: darkblue;
+}
+.title2{
+    display: flex;
+    text-align: left;
+    font-size: 40px;
+    font-weight: bold;
+    color: darkblue;
+}
+.description{
+    display: flex;
+    width: 50%;
+    text-align: left;
+    color:#769FCD;
+}
+

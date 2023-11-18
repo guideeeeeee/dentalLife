@@ -1,0 +1,123 @@
+.headCalen {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.inGrid {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(auto, 1fr));
+
+}
+
+.calendar-day-name {
+  color: #FFA45B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inGrid button{
+  display: flex;
+  align-items: center;
+  background-color: #FFD89C;
+  border: none;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  margin: 4px 4px;
+  border-radius: 8px;
+}
+
+.headCalen h5{
+  display: flex;
+  color: #FFA45B;
+  align-items: center;
+}
+.calendar-day{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 70%;
+  background-color: #fffbf5;
+  margin:2px ;
+  border-radius: 10px;
+  height: 30px; 
+  cursor: pointer;
+}
+
+.calendar-day:hover{
+  background-color: #FFD89C;
+  font-size: 100%;
+}
+
+.CT-inGrid{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: start;
+}
+
+.time-AL{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50%;
+  background-color: #fffbf5;
+  margin:2px ;
+  border-radius: 10px;
+  height: 25px; 
+  cursor: pointer;
+}
+.time-AL:hover{
+  background-color: #FFD89C;
+  font-size: 55%;
+}
+.timeGrid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.calendar-day.selected{
+  background-color:#FFA45B;
+  cursor: pointer;
+  font-size: 100%;
+}
+.time-AL.selected{
+  background-color:#FFA45B;
+  cursor: pointer;
+  font-size: 55%;
+}
+.time-AL.unavailable {
+  background-color: #d9534f;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: 768px) {
+  .headCalen {
+    grid-template-columns: 1fr; 
+  }
+
+  .inGrid {
+    justify-content: center; 
+  }
+
+  .calendar-day-name{
+    font-size:40%
+  }
+  .inGrid button,
+  .headCalen h5,
+  .calendar-day,.calendar-day:hover,.calendar-day.selected{
+    font-size: 60%; 
+  }
+  .time-AL,.time-AL:hover,.time-AL.selected{
+    font-size:40%;
+  }
+  .timeGrid{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

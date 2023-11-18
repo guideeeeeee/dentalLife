@@ -1,0 +1,106 @@
+.body {
+    flex: 50%;
+    display: flex;
+    justify-content: flex-start;
+    font-size: 1.7rem;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.dropdown {
+    display: inline-block;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 2px rgb(204, 204, 204);
+    transition: all 0.5s ease;
+    position: relative;
+    font-size: 14px;
+    color: #474747;
+    height: 100%;
+    text-align: left;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown .select {
+    display: block;
+    position: relative;
+}
+
+.dropdown .select>i {
+    font-size: 13px;
+    color: #888;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    float: right;
+}
+
+/* Hover state for the dropdown */
+.dropdown:hover {
+    box-shadow: 0 0 4px rgb(204, 204, 204);
+}
+
+/* Active state for the dropdown */
+.dropdown:active {
+    background-color: #f8f8f8;
+}
+
+/* Active state when dropdown is open */
+.dropdown.active:hover,
+.dropdown.active {
+    box-shadow: 0 0 4px rgb(204, 204, 204);
+    border-radius: 2px 2px 0 0;
+    background-color: #f8f8f8;
+}
+
+/* Icon rotation when dropdown is active */
+.dropdown.active .select>i {
+    transform: rotate(-90deg);
+}
+
+/* Dropdown menu container */
+.dropdown .dropdown-menu {
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    left: 0;
+    margin-top: 10px;
+    box-shadow: 0 1px 2px rgb(204, 204, 204);
+    border-radius: 0 1px 2px 2px;
+    overflow: hidden;
+    display: none;
+    max-height: 0;
+    overflow-y: auto;
+    z-index: 9;
+    transition: max-height 0.5s ease;
+}
+
+/* Dropdown menu items */
+.dropdown .dropdown-menu li {
+    padding: 10px;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+/* Clear default list style */
+.dropdown .dropdown-menu {
+    padding: 0;
+    list-style: none;
+}
+
+/* Hover state for menu items */
+.dropdown .dropdown-menu li:hover {
+    background-color: #f2f2f2;
+}
+
+/* Active state for menu items */
+.dropdown .dropdown-menu li:active {
+    background-color: #e2e2e2;
+}
+
+/* Active state for the dropdown menu */
+.active .dropdown-menu {
+    display: block;
+    max-height: 144px;
+    /* Expand to show all items */
+}

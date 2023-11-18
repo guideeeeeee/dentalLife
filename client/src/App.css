@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap');
+*{
+  padding:0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Monda', sans-serif;
+  text-decoration: none;
+}
+li{
+  list-style: none;/*ทำให้จุดที่เกิดจากliหายไป*/
+}
+
+html{
+  font-size: calc(60% + 0.8vmin);/*ย่อตามขนาดหน้าจอ*/
+}

@@ -1,0 +1,179 @@
+.LoginLogin_main .box{
+    position: relative;
+    top: 4.1rem;
+    width: 100%;
+    z-index: 1;
+}
+
+.LoginLogin_main .bg{
+    position: absolute;
+    width: 100% ;
+    overflow: hidden;
+}
+
+.LoginLogin_main #boxin{
+    position: absolute;
+    box-sizing: border-box;
+    border-radius: 3rem;
+    width: 30rem;/*กำหนดขนาด กำหนดตนบนซ้าย*/
+    height: 37rem;
+    margin-top: 6rem;
+    margin-left: 6rem;
+    background-color: #ffffff;
+    opacity: 0.9;
+    filter: alpha(opacity=80); /*กรอบเบลอ*/
+    box-shadow: 0 5px 5px rgba(159, 162, 177, 0.8);
+    min-height: 70px;
+}
+
+.LoginLogin_main .h{
+    position: absolute;
+    box-sizing: border-box;
+    width: 30rem;/*กำหนดขนาด กำหนดตนบนซ้าย*/
+    height: 37rem;
+    top: 6rem;
+    left: 6rem;
+}
+
+.LoginLogin_main #boxfrom{
+    position: absolute;
+    border-radius: 2rem;
+    width: 25rem;
+    height: 2rem;
+    left: 2.5rem;
+    background-color: #D9D9D9;
+}
+
+.LoginLogin_main #boxPersonal{
+    position: absolute;
+    border-radius: 2rem;
+    width: 12.5rem;
+    height: 2rem;
+    left: 2.5rem;
+    display: flex;/*30-32ทำให้อยู่ตรงกลาง*/
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background-color: #769FCD;
+}
+
+.LoginLogin_main #boxClinic{
+    position: absolute;
+    border-radius: 2rem;
+    width: 12.5rem;
+    height: 2rem;
+    right: 2.5rem;
+    display: flex;/*30-32ทำให้อยู่ตรงกลาง*/
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background-color: #D9D9D9;
+}
+
+.LoginLogin_main #email ,#password{
+    position: absolute;
+    border-radius: 2rem;
+    border: 0.08rem solid black;
+    width: 25rem;
+    height: 2rem;
+    left: 2.5rem;
+}
+
+.check-remember{
+    display: flex;
+    accent-color: #35A29F;
+    padding: auto;
+    gap: 10px;
+    margin-left: 10%;
+    color: #769FCD;
+    align-items: center;
+} 
+
+.LoginLogin_main #submit{
+    font-size: 2rem;
+    font-weight: 400;
+    border-radius: 1rem;
+    padding: 0.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background-color: #769FCD;
+    border: none;/*เอาเส้นขอบออก*/
+    cursor: pointer;
+}
+
+.LoginLogin_main .row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    color: #769FCD;
+}
+
+@media(max-width:768px){
+    .LoginLogin_main .bg{
+        position: absolute;
+        left: -110%;
+    }
+    
+    body{
+        background-color: #C2DEDC;
+    }
+
+    .LoginLogin_main #boxin{
+        position: absolute;
+        box-sizing: border-box;
+        border-radius: 3rem;
+        width: 30rem;/*กำหนดขนาด กำหนดตนบนซ้าย*/
+        height: 37rem;
+        background-color: #ffffff;
+        opacity: 0.9;
+        filter: alpha(opacity=80); /*กรอบเบลอ*/
+        box-shadow: 0 5px 5px rgba(159, 162, 177, 0.8);
+        min-height: 70px;
+    }
+}
+
+/*img*/
+.LoginLogin_main #img{
+    height: 1.5rem;
+}
+
+.LoginLogin_main #imghome{
+    height: 1rem;
+    margin-top: 1.5rem;
+}
+
+
+.LoginLogin_main h1{
+    color: #769FCD;
+    margin-top: 3rem;
+    margin-bottom: 2.3rem;
+    font-size: 2.6rem;
+    font-weight: 400;
+    text-shadow: rgb(210, 210, 210) 0.1em 0.1em 0.1em
+}
+
+.LoginLogin_main h2{
+    margin-left: 3.5rem;
+    margin-top: 2.5rem;
+    color: #769FCD;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.LoginLogin_main h3{
+    position: absolute;
+    left: 5rem;
+    color: #769FCD;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.LoginLogin_main h5{
+    
+    position: absolute;
+    color: #769FCD;
+}
+/*font*/

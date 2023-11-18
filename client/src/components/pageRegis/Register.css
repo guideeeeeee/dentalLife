@@ -1,0 +1,86 @@
+.app{
+  background-image: url(/images-login/bg.svg);
+  width:100%;
+  height: 100%;
+  display:flex;
+  justify-content:center;
+}
+.createApp {
+  color: #769FCD;
+  padding: 30px;
+  border-radius: 5%;
+  margin-top: 10%;
+  margin-left: 7%;
+  margin-right: 7%;
+  margin-bottom: 4% ;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.616); /*ตรงนี้ใช้สีแดงไปก่อน มันจะได้เห็นชัดแล้วค่อยเปลี่ยนเป็นสีขาว*/
+}
+
+.form1 {
+  display: flex;
+  padding: 10px;
+}
+.formleft{
+  margin-right: 10px;
+}
+.formRight{
+  margin-left: 10px;
+}
+.signUpbtn {
+  background-color: #769FCD;
+  border: 0 ;
+  color: #ffffff;
+  display: flex;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight:regular;
+  border-radius: 15px;
+  padding: 10px;
+}
+.column-name-text label,.name-text label,.password-input label{
+  margin-left: 5px;
+}
+.column-name-text input,.name-text input,.password-input input{
+  border-radius: 20px;
+  padding : 15px;
+}
+.bottomClick li{
+  display: inline-block;
+  padding: 0px 20px;
+}
+.column{
+  display: flex;
+  column-gap: 10px;
+}
+.column-name-text{
+  display: flex;
+  flex-direction:column;
+  width: 250px;
+}
+.name-text{
+  display: flex;
+  flex-direction:column;
+}
+.password-input{
+  display: flex;
+  flex-direction:column;
+  position: relative;
+  }
+  
+.show-hide-icon{
+  position: absolute;
+  top: 66%;
+  right: 10px;
+  transform: translateY(-50%);
+  display: flex;
+  align-Items: center;
+  cursor:pointer;
+  }
+  
+.show-hide-icon{
+  margin-Right: 4px;
+  }
