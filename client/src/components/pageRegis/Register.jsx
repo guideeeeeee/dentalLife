@@ -67,7 +67,7 @@ export default function Register() {
             {/* name */}
             <div className="column">
               <div className="column-name-text">
-                <label>Firstname:</label>
+                <label>Firstname:*</label>
                 <input
                   type="text"
                   name="fname"
@@ -77,7 +77,7 @@ export default function Register() {
                 />
               </div>
               <div className="column-name-text">
-                <label>Lastname:</label>
+                <label>Lastname:*</label>
                 <input
                   type="text"
                   name="lname"
@@ -112,7 +112,7 @@ export default function Register() {
 
             {/* email */}
             <div className="name-text">
-              <label>Email:</label>
+              <label>Email:*</label>
               <input
                 type="email"
                 name="Email"
@@ -124,7 +124,7 @@ export default function Register() {
 
             {/* password */}
             <div className="password-input">
-              <label>Password:</label>
+              <label>Password:*</label>
               <input
                 type={passwordShown ? "text" : "password"}
                 value={formData.Password}
@@ -140,7 +140,7 @@ export default function Register() {
             {/* confirm password */}
             <div className="password-input">
               <span>
-                <label>Confirm password:</label>
+                <label>Confirm password:*</label>
               </span>
 
               <input
@@ -156,7 +156,7 @@ export default function Register() {
 
             {/* ID card */}
             <div className="name-text">
-              <label>ID Card:</label>
+              <label>ID Card:*</label>
               <input
                 type="number"
                 name="id"

@@ -62,9 +62,11 @@ function EditDoctor() {
     wlocation5: null,
     gender: null,
   });
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
@@ -76,6 +78,17 @@ function EditDoctor() {
       console.error("Registration failed:", error);
     }
   };
+
+  const getCraft = (e) =>{
+    try{
+      const response = axios.get("http://localhost:3001/api/craft");
+      console.log(response.data);
+    }
+    catch(error){
+      console.error("fail to pulled:",error);
+    }
+  };
+  
   return (
     <>
       <div className="wpage" >
@@ -86,12 +99,12 @@ function EditDoctor() {
             {/* fullname */}
             <div className="fullname">
               <div className="fullname-text">
-                <label className="fntext">First Name :</label>
-                <input type="text" name = "fname" value={formData.fname} onChange={handleChange}></input>
+                <label className="fntext">First Name :*</label>
+                <input type="text" name = "fname" value={formData.fname} onChange={handleChange} required></input>
               </div>
               <div className="fullname-text">
-                <label className="fntext">Last Name :</label>
-                <input type="text" name ="lname" value={formData.lname} onChange={handleChange}></input>
+                <label className="fntext">Last Name :*</label>
+                <input type="text" name ="lname" value={formData.lname} onChange={handleChange} required></input>
               </div>
             </div>
             {/* specialized */}
@@ -101,8 +114,8 @@ function EditDoctor() {
             </div>
             {/* PLAB */}
             <div className="Plab">
-              <text className="DocNormalText">PLAB :</text>
-              <input type="text" name="plab" value={formData.plab} onChange={handleChange}></input>
+              <text className="DocNormalText">PLAB :*</text>
+              <input type="text" name="plab" value={formData.plab} onChange={handleChange} required></input>
             </div>
           </div>
           {/* image */}
@@ -126,7 +139,7 @@ function EditDoctor() {
               <input type="text" className="language" name="language" value={formData.language} onChange={handleChange}></input>
             </div>
             <div className="multi-select-dropdown">
-            <text className="DocNormalText">Treatment and service :</text>
+            <text className="DocNormalText">Treatment and service :* required</text>
               <label onClick={handleToggleOptions} className="dropdown-label">
               Selected options: 
               </label>
