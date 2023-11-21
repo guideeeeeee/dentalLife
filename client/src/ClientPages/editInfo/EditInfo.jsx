@@ -67,14 +67,14 @@ export default function EditInfo() {
     }
     try {
       //เปลี่ยนเป็นupdate
-      const response = await axios.post(
-        "http://localhost:3001/auth/register",
+      const response = await axios.put(
+        "http://localhost:3001/auth/SaveInfo",
         formData
       );
       console.log(response.data);
-      navigate("/ClientLogin");
+      navigate("/Profile");
     } catch (error) {
-      console.error("Registration failed:", error);
+      console.error("SaveInfo failed:", error);
     }
   };
 
@@ -289,7 +289,7 @@ export default function EditInfo() {
             <p className="EditInfoText">CANCEL
             </p>
             </Link>
-            <button className="buttonEditInfo" >CONFIRM</button>
+            <button className="buttonEditInfo" onClick={handleSubmit} >CONFIRM</button>
             </div>
       </div>
     </div>

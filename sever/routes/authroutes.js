@@ -8,5 +8,6 @@ router.post("/login", authController.login);
 router.post("/loginclinic", authController.loginClinic);
 router.post("/authen", authController.authenticate);
 router.post("/EditInfo",authController.EditInfo);
+router.put("/SaveInfo",authController.SaveInfo);
 
 module.exports = router;

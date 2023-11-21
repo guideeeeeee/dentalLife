@@ -25,6 +25,7 @@
   border: 0;
   color: #ffffff;
   display: flex;
+  align-items: center;
   font-size: 18px;
   font-weight: regular;
   margin-top: 5px;
@@ -33,7 +34,9 @@
 }
 
 .EditInfoText {
+  display: flex;
+  align-items: center;
+  padding: 10px;
   font-size: 18px;
-  padding: 15px;
   color: #769fcd;
 }

@@ -156,13 +156,12 @@ export default function Register() {
 
             {/* ID card */}
             <div className="name-text">
-              <label>ID Card:*</label>
+              <label>ID Card:</label>
               <input
                 type="number"
                 name="id"
                 value={formData.id}
                 onChange={handleChange}
-                required
               />
             </div>
             <button className="signUpbtn" type="submit">

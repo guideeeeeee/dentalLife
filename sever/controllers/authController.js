@@ -104,6 +104,33 @@ module.exports.EditInfo = (req,res,next) => {
   });
 }
 
+module.exports.SaveInfo = (req,res,next) => {
+  db.execute("UPDATE client SET fname=?, lname=?, Tel=?, IDLine=?, Religion=?, Nationality=?, Occupation=?, DOB=?, Weight=?, Height=?, Address=?, allergy=?, idcard=? WHERE uuid=?",
+  [
+    req.body.fname,
+    req.body.lname,
+    req.body.Tel,
+    req.body.IDLine,
+    req.body.Religion,
+    req.body.Nationality,
+    req.body.Occupation,
+    req.body.DOB,
+    req.body.Weight,
+    req.body.Height,
+    req.body.Address,
+    req.body.allergy,
+    req.body.idcard,
+    req.body.uuid,
+  ], (err, results) => {
+    if (err) {
+      console.error('Error updating data:', err);
+      res.json({ status: 'error', message: err });
+    } else {
+      console.log('Data updated successfully');
+      res.json({ status: 'ok' });
+    }});
+}
+
 module.exports.register = function (req, res, next) {
   const userid = uuid.v4().substring(0, 10);
   bcrypt.hash(req.body.Password, saltRounds, function (err, hash) {

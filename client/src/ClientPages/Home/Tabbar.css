@@ -61,6 +61,25 @@
     transition: 0.7s ease;
 }
 
+.nav-itembtn{
+    background-color: #769FCD;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+    border-color: #769FCD;
+    cursor: pointer;
+    transition: 0.7s ease;
+}
+.bookappoint{
+    cursor:pointer;
+    transition: 0.7s ease;
+}
+.bookappoint:hover{
+    transform: scale(0.95);
+}
+.nav-itembtn:hover{
+    transform: scale(0.95);
+}
 .tab-link:hover{/*ดักจับเหต์การเมื่อเอาเมาส์วาง*/
     transform: scale(0.95);/*ย่อเมื่อเมาส์วางดูรูปแบบจากtiktok*/   
 

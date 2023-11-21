@@ -34,13 +34,13 @@ function Tabbar() {
           {getToken() && <li className="nav-item" onClick={() => {
             return setModalstate(true)
           }}>
-            <p style={{ cursor: 'pointer' }} id="round">
+            <p className='bookappoint' id="round">
               <img id="img" src="images-tabbar\calendar.png" />
               <span className="h1" > BOOK APPOINTMENT</span>
             </p>
           </li>}
           {getToken() ?
-            <button className="nav-item" onClick={handleLogout}>
+            <button className="nav-itembtn" onClick={handleLogout}>
               log out
             </button>
             : <li className="nav-item" >
