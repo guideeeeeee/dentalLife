@@ -4,6 +4,7 @@ import Tabbarclinic from "../Tabbarclinic/Tabbarclinic.jsx";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { getuuid } from "../../../service/authorize.jsx";
 function EditDoctor() {
   const navigate = useNavigate();
   function handleImageClick() {
@@ -24,6 +25,7 @@ function EditDoctor() {
     }));
   };
   const handleToggleOptions = () => {
+    handlecraft();
     setShowOptions(!showOptions);
   };
   const [formData, setFormData] = useState({
@@ -34,7 +36,7 @@ function EditDoctor() {
     IDLine: null,
     tservice: null,
     S_exper: null,
-    CenClinic: null,
+    CenClinic: getuuid(),
     language: null,
     gYear1:null,
     gYear2:null,
@@ -79,10 +81,11 @@ function EditDoctor() {
     }
   };
 
-  const getCraft = (e) =>{
+  const [craft,getCraft] = useState([]);
+  const handlecraft =async () =>{
     try{
-      const response = axios.get("http://localhost:3001/api/craft");
-      console.log(response.data);
+      const response =await axios.get("http://localhost:3001/api/craft");
+      getCraft(response.data)
     }
     catch(error){
       console.error("fail to pulled:",error);
@@ -132,14 +135,14 @@ function EditDoctor() {
           <div className="part1">
             <div className="test">
               {/* center clinic */}
-              <text className="DocNormalText">Centers and Clinics :</text>
-              <input type="text" className="centers" name="CenClinic" value={formData.CenClinic} onChange={handleChange}></input>
+              {/* <text className="DocNormalText">Centers and Clinics :</text>
+              <input type="text" className="centers" name="CenClinic" value={formData.CenClinic} onChange={handleChange}></input> */}
               {/* language */}
               <text className="DocNormalText">Language:</text>
               <input type="text" className="language" name="language" value={formData.language} onChange={handleChange}></input>
             </div>
             <div className="multi-select-dropdown">
-            <text className="DocNormalText">Treatment and service :* required</text>
+            <text className="DocNormalText">Treatment and service :* </text>
               <label onClick={handleToggleOptions} className="dropdown-label">
               Selected options: 
               </label>
@@ -149,11 +152,12 @@ function EditDoctor() {
                   name="tservice"
                   value={selectedOptions}
                   onChange={handleSelectionChange}
-                  className="dropdown-select"
-                >
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
-                  <option value="option3">Option 3</option>
+                  className="dropdown-select">
+                  {craft.map((craftOption,index) => (
+      <option key={index} value={craftOption.nameOfcraft}>
+        {craftOption.nameOfcraft}
+      </option>
+    ))}
                   
                 </select>
               )}

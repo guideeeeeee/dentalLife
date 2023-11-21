@@ -1,0 +1,39 @@
+.appEditInfo{
+    display:flex;
+    justify-content:center;
+  }
+  .createApp {
+    color: #769FCD;
+    padding: 30px;
+    border-radius: 5%;
+    margin-top: 10%;
+    margin-left: 7%;
+    margin-right: 7%;
+    margin-bottom: 4% ;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 2px 1px rgba(159, 162, 177, 0.8);/*เงา*/
+    background: rgba(255, 255, 255, 0.616); /*ตรงนี้ใช้สีแดงไปก่อน มันจะได้เห็นชัดแล้วค่อยเปลี่ยนเป็นสีขาว*/
+  }
+.bottomEdit {
+  display: flex;
+}
+.buttonEditInfo {
+  background-color: #769fcd;
+  border: 0;
+  color: #ffffff;
+  display: flex;
+  font-size: 18px;
+  font-weight: regular;
+  margin-top: 5px;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.EditInfoText {
+  font-size: 18px;
+  padding: 15px;
+  color: #769fcd;
+}

@@ -8,6 +8,7 @@ import EditDoctor from "./clinicpages/Createdoc/EditDoctor.jsx";
 import Pagesearchpa from "./clinicpages/Page-search-patient/Page-search-patient.jsx";
 import Clinichome from "./clinicpages/home/Clinichome.jsx";
 import Clienthome from "./ClientPages/Home/Clienthome.jsx";
+import EditInfo from "./ClientPages/editInfo/editInfo.jsx";
 const MyRoute = () => {
     return (
         <Router>
@@ -15,6 +16,7 @@ const MyRoute = () => {
                 <Route path="/" element={<Clienthome />} />
                 <Route path="/homeClinic" element={<Clinichome />} />
                 <Route path="/Profile" element={<Profile />} />
+                <Route path="/EditInfo" element={<EditInfo/>}/>
                 <Route path="/ClientLogin" element={<Login_main />} />
                 <Route path="/Register" element={<Register />} />
                 <Route path="/ClinicLogin" element={<Login_main_clinic />} />

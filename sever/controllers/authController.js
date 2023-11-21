@@ -92,6 +92,18 @@ module.exports.authenticate = (req, res, next) => {
   }
 };
 
+module.exports.EditInfo = (req,res,next) => {
+  db.execute("SELECT * FROM client WHERE uuid=?",
+  [req.body.id],
+  (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(results);
+    }
+  });
+}
+
 module.exports.register = function (req, res, next) {
   const userid = uuid.v4().substring(0, 10);
   bcrypt.hash(req.body.Password, saltRounds, function (err, hash) {

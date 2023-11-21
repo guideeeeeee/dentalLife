@@ -117,7 +117,7 @@ exports.edit = function (req, res, next) {
 
 exports.dataDent = (req, res, next) => {
   db.execute(
-    "SELECT * FROM dentist WHERE clinicID = ?",
+    "SELECT * FROM dentist WHERE CenClinic = ?",
     [req.body.clinicID],
     (err, results) => {
       if (err) {

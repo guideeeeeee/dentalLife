@@ -32,10 +32,10 @@ function SclinicP2({ handleContinueClick, handleBackClick }) {
     const docid = useSelector((state)=> state.Booking.id)
     
     const DoctortoggleDropdown = async () => {
-        console.log(docid)
         try {
             const response = await axios.post("http://localhost:3001/api/dataDent",{clinicID:docid});// iddoc 
             setdoc(response.data)
+            console.log(response.data);
             setdoctorActive(!doctorActive);
         } catch (error) {
             console.error("Error toggling dropdown:", error);
@@ -77,10 +77,10 @@ function SclinicP2({ handleContinueClick, handleBackClick }) {
                         {doctor.map((doctor, index) => (
                             <li
                                 key={index}
-                                onClick={() => DoctorHandleOption(doctor.Firstname+" "+doctor.Lastname,doctor.ProfessionalLicenseNumber)}
-                                className={SelectedDoctor === doctor.Firstname+" "+doctor.Lastname ? "selected" : ""}
+                                onClick={() => DoctorHandleOption(doctor.fname+" "+doctor.lname,doctor.plab)}
+                                className={SelectedDoctor === doctor.fname+" "+doctor.lname ? "selected" : ""}
                             >
-                                {doctor.Firstname+" "+doctor.Lastname}
+                                {doctor.fname+" "+doctor.lname}
                             </li>
                         ))}
                     </ul>

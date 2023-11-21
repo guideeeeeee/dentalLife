@@ -1,5 +1,5 @@
 import './Boxprofile.css'
-
+import { Link, useNavigate } from "react-router-dom";
 function Boxprofile(){
     return(
         <div className='boxprofile'>
@@ -13,7 +13,9 @@ function Boxprofile(){
                     <p>Weight :</p>
                     <p>Height :</p>
                     <p>Tel :</p>
-                {/* <center><div className='editInformation'>EDIT INFORMATION</div></center> */}
+                <Link to="/EditInfo" style={{ cursor: 'pointer' }}>
+                <center><div className='editInformation'>EDIT INFORMATION</div></center>
+                </Link>
             </div>
         </div>
     )
