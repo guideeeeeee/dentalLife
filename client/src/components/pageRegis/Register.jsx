@@ -103,8 +103,8 @@ export default function Register() {
                 <label>ID line:</label>
                 <input
                   type="text"
-                  name="IDline"
-                  value={formData.IDline}
+                  name="IDLine"
+                  value={formData.IDLine}
                   onChange={handleChange}
                 />
               </div>
@@ -200,7 +200,7 @@ export default function Register() {
               <div className="column-name-text">
                 <label>Date of Birth:</label>
                 <input
-                  type="text"
+                  type="date"
                   name="DOB"
                   value={formData.DOB}
                   onChange={handleChange}

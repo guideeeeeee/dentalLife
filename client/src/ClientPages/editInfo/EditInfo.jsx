@@ -54,7 +54,6 @@ export default function EditInfo() {
   //   allergy: null,
   //   idcard: null,
   // });
-  
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -124,7 +123,7 @@ export default function EditInfo() {
                 <label>ID line:</label>
                 <input
                   type="text"
-                  name="IDline"
+                  name="IDLine"
                   value={formData.IDLine}
                   onChange={handleChange}
                 />
@@ -220,9 +219,9 @@ export default function EditInfo() {
               <div className="column-name-text">
                 <label>Date of Birth:</label>
                 <input
-                  type="text"
+                  type="Date"
                   name="DOB"
-                  value={formData.DOB}
+                  value={formData.DOB ? new Date(formData.DOB).toLocaleDateString('en-CA') : ""}
                   onChange={handleChange}
                 />
               </div>
