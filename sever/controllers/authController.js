@@ -105,7 +105,7 @@ module.exports.EditInfo = (req,res,next) => {
 }
 
 module.exports.SaveInfo = (req,res,next) => {
-  db.execute("UPDATE client SET fname=?, lname=?, Tel=?, IDLine=?, Religion=?, Nationality=?, Occupation=?, DOB=?, Weight=?, Height=?, Address=?, allergy=?, idcard=? WHERE uuid=?",
+  db.execute("UPDATE client SET fname=?, lname=?, Tel=?, IDLine=?, Religion=?, Nationality=?, Occupation=?, Weight=?, Height=?, Address=?, allergy=?, idcard=? WHERE uuid=?",
   [
     req.body.fname,
     req.body.lname,
@@ -114,7 +114,6 @@ module.exports.SaveInfo = (req,res,next) => {
     req.body.Religion,
     req.body.Nationality,
     req.body.Occupation,
-    req.body.DOB,
     req.body.Weight,
     req.body.Height,
     req.body.Address,

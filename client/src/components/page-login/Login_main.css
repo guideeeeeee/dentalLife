@@ -4,6 +4,9 @@
     width: 100%;
     z-index: 1;
 }
+.LoginLogin_main input{
+    padding-left: 10px;
+}
 
 .LoginLogin_main .bg{
     position: absolute;

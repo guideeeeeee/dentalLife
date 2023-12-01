@@ -76,6 +76,7 @@ export default function EditInfo() {
       console.error("SaveInfo failed:", error);
     }
   };
+  const newDOB = new Date(formData.DOB).toLocaleDateString('en-CA');
 
   return (
     <div className="appEditInfo">
@@ -221,8 +222,8 @@ export default function EditInfo() {
                 <input
                   type="Date"
                   name="DOB"
-                  value={formData.DOB ? new Date(formData.DOB).toLocaleDateString('en-CA') : ""}
-                  onChange={handleChange}
+                  value={formData.DOB ? newDOB : ""}
+                  readOnly
                 />
               </div>
             </div>
