@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { getuuid } from "../../../service/authorize";
+import { getClinicuuid } from "../../../service/authorize";
 function BodySD({treat,doc}) {
 
     //TREATMENT DATA
@@ -29,7 +29,7 @@ function BodySD({treat,doc}) {
     const [SelectedDoctor, setSelectedDoctor] = useState(null);
     const [doctorActive, setdoctorActive] = useState(false);
     const [doctor, setdoc] = useState([])
-    const clinicidd = getuuid();
+    const clinicidd = getClinicuuid();
     const DoctortoggleDropdown = async() => {
         console.log(clinicidd)
         try {
@@ -61,7 +61,7 @@ function BodySD({treat,doc}) {
                 onClick={toggleDropdownS1}
             >
                 <div className="select">
-                    {selectedTreatment || "Select Clinic"}
+                    {selectedTreatment || "Select Treatment"}
                     <i className="icon">▼</i>
                 </div>
                 <ul className={`dropdown-menu `}>
@@ -89,17 +89,17 @@ function BodySD({treat,doc}) {
                 onClick={DoctortoggleDropdown}
             >
                 <div className="select">
-                    {SelectedDoctor || "Select Clinic"}
+                    {SelectedDoctor || "Select Doctor"}
                     <i className="icon">▼</i>
                 </div>
                 <ul className={`dropdown-menu `}>
                     {doctor.map((doctor, index) => (
                         <li
                             key={index}
-                            onClick={() => DoctorHandleOption(doctor.Firstname+" "+doctor.Lastname,doctor.ProfessionalLicenseNumber)}
-                            className={SelectedDoctor === doctor.Firstname+" "+doctor.Lastname ? "selected" : ""}
+                            onClick={() => DoctorHandleOption(doctor.fname+" "+doctor.lname,doctor.plab)}
+                            className={SelectedDoctor === doctor.fname+" "+doctor.lname ? "selected" : ""}
                         >
-                            {doctor.Firstname+" "+doctor.Lastname}
+                            {doctor.fname+" "+doctor.lname}
                         </li>
                     ))}
                 </ul>

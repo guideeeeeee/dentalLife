@@ -51,6 +51,7 @@
     position: relative;
     display: flex;/*ทำให้อยู่ตรงกลางเส้นเดียวกัน*/
     align-items: center;
+    padding-right: 6px;
     border: none;
     background: none;
     font-size: 12px;
@@ -69,11 +70,10 @@
   }
 
 .imgtab{
-    margin-left: 5px;
+    margin-left: 10px;
     margin-right: 6px;/*ระยะห่างรูปกับข้้อความ*/
     width: auto;
     height: 18px;
     border-radius: 0;
     
 }
- 

@@ -5,7 +5,7 @@ function Buttonchange() {
     const navigate = useNavigate();
     return (
         <button className="buttonchange" style={{ cursor: 'pointer' }} onClick={() => navigate("/SearchDoc")} >
-            <div className="circle" /><p>DN</p>
+            <div className="circle" /><p>PT</p>
         </button>
     )
 }

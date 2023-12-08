@@ -42,7 +42,7 @@ module.exports.scheduling = function (req, res, next) {
 
 exports.regisDent = function (req, res, next) {
   db.execute(
-    "INSERT INTO dentist VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+    "INSERT INTO dentist VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
     [
       req.body.plab,
       req.body.fname,
@@ -78,6 +78,7 @@ exports.regisDent = function (req, res, next) {
       req.body.wlocation4,
       req.body.wlocation5,
       req.body.gender,
+      req.body.ImgDoc,
     ],
     function (err, results, fields) {
       if (err) {
@@ -88,7 +89,6 @@ exports.regisDent = function (req, res, next) {
     }
   );
 };
-
 
 exports.edit = function (req, res, next) {
   db.execute(

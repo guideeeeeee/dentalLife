@@ -24,7 +24,7 @@
     height: 28px;
     width: 28px;
     top: 3.5px;
-    left: 5px;
+    left: 35px;
     background: #F7D08A;
     border-radius: 50px;
 }
@@ -32,7 +32,7 @@
 .buttonchange p{
     position: relative;
     top: -23px;
-    left: 5px;
+    left: -15px;
     color: #F7D08A;
 }
 

@@ -25,7 +25,15 @@
 }
 .imagedoc{
   display: flex;
+  flex-direction: column;
   margin-right: 100px;
+}
+.imagedoc img{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+
 }
 #imgDoc {
   width: 200px;

@@ -6,7 +6,7 @@ import SclinicP3 from "./SClinicP3.jsx";
 import {useSelector } from 'react-redux';
 import axios from "axios";
 import { getuuid } from "../../../service/authorize.jsx";
-function ApModal({ setOpenModal }) {
+function ApModal({ setOpenModal,id }) {
   const [currentStep, setCurrentStep] = useState(1);
   const selecClinic = useSelector((state) => state.Booking.id);
   const selecTreat = useSelector((state) => state.Booking.selecTreat);
@@ -14,7 +14,8 @@ function ApModal({ setOpenModal }) {
   const date = useSelector((state) => state.Booking.date);
   const time = useSelector((state) => state.Booking.time);
   const status = useSelector((state) => state.Booking.status);
-  const userid = getuuid();
+  const userid = getuuid(id);
+  console.log(userid)
   const handleDone = async() => {
     console.log(userid)
     await axios.post("http://localhost:3001/api/booking",

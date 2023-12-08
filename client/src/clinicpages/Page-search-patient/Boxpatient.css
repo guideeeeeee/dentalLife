@@ -19,13 +19,24 @@
     transform: scale(0.995);
   }
 
-  .BoxPatient .edit{
-    position: absolute;
+.BoxPatient div.edit{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.BoxPatient button.edit{
+    position: relative;
     color: #ffffff;
-    display: flex;/*30-32ทำให้อยู่ตรงกลาง*/
+    display: block;/*30-32ทำให้อยู่ตรงกลาง*/
     align-items: center;
     justify-content: center;
-    width: 100%;
+    top: 75px;
+    left: 9px;
+    width: 90%;
     height: 30px;
     background: #F7D08A;
     bottom: 0;
@@ -33,12 +44,12 @@
     border: 0;
 }
 
-.BoxPatient .edit:hover{/*ดักจับเหต์การเมื่อเอาเมาส์วาง*/
+.BoxPatient button.edit:hover{/*ดักจับเหต์การเมื่อเอาเมาส์วาง*/
     transform: scale(0.995);/*ย่อเมื่อเมาส์วางดูรูปแบบจากtiktok*/   
 
 }
 
-.BoxPatient .edit:active {/*ดักจับเหต์การเมื่อกด*/
+.BoxPatient button.edit:active {/*ดักจับเหต์การเมื่อกด*/
     background-color: #f0d4a0;
     transform: scale(0.995);
   }
@@ -58,14 +69,14 @@
     color: #F7931E;
     position: absolute;
     font-size: 10px;
-    top: 18px;
-    left: 120px;
+    top: 35px;
+    left: 140px;
 }
 
 .BoxPatient h6{
     color: #F7931E;
     position: absolute;
     font-size: 10px;
-    top: 85px;
+    top: 105px;
     left: 30px;
 }

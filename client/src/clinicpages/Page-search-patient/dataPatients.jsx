@@ -71,6 +71,8 @@ const dataPatients = [
       dataprice:"5000 Bath"
     },
     
+    
+    
 
     
   

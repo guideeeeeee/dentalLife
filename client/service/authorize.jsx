@@ -6,7 +6,7 @@ export const authentication = (response, next) => {
         if(response.data.user[0].uuid ){
         sessionStorage.setItem("uuid",JSON.stringify(response.data.user[0].uuid))}
         else{
-            sessionStorage.setItem("uuid",JSON.stringify(response.data.user[0].ID_Clinic))
+            sessionStorage.setItem("Clinicuuid",JSON.stringify(response.data.user[0].ID_Clinic))
         }
     }
     next();
@@ -41,16 +41,26 @@ export const logout = (next) => {
         sessionStorage.removeItem("token");
         sessionStorage.removeItem("email");
         sessionStorage.removeItem("uuid");
+        sessionStorage.removeItem("Clinicuuid");
     }
     next();
 };
 
-export const getuuid = ()=>{
+export const getuuid = (id)=>{
+    if(id){return id}
     if (typeof window !== "undefined") {
         if (sessionStorage.getItem("uuid")) {
             return JSON.parse(sessionStorage.getItem("uuid"));
-        } else {
-            return false;
         }
+        else return false;
+    }
+}
+
+export const getClinicuuid = ()=>{
+    if (typeof window !== "undefined") {
+        if(sessionStorage.getItem("Clinicuuid")){
+            return JSON.parse(sessionStorage.getItem("Clinicuuid"));
+        }
+        else return false;
     }
 }
