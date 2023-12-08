@@ -114,9 +114,11 @@ export default function EditInfo() {
               <div className="column-name-text">
                 <label>Tel:</label>
                 <input
-                  type="number"
+                  type="text"
                   name="Tel"
                   value={formData.Tel}
+                  pattern="[0-9]*"
+                  maxLength={"10"}
                   onChange={handleChange}
                 />
               </div>

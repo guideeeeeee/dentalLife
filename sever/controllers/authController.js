@@ -92,6 +92,17 @@ module.exports.authenticate = (req, res, next) => {
   }
 };
 
+module.exports.profileClient = (req,res,next) => {
+  db.execute("SELECT uuid, lname,fname,DOB,Weight,Height,Tel FROM client where uuid = ?",[req.body.uuid],
+  (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(results);
+    }
+  });
+  };
+
 module.exports.EditInfo = (req,res,next) => {
   db.execute("SELECT * FROM client WHERE uuid=?",
   [req.body.id],

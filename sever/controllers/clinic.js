@@ -20,6 +20,7 @@ module.exports.craft = function (req, res, next) {
   });
 };
 
+
 module.exports.scheduling = function (req, res, next) {
   db.execute(
     "INSERT INTO scheduling VALUES(?,?,?,?,?)",
@@ -115,10 +116,11 @@ exports.edit = function (req, res, next) {
   );
 };
 
+
 exports.dataDent = (req, res, next) => {
   db.execute(
-    "SELECT * FROM dentist WHERE CenClinic = ?",
-    [req.body.clinicID],
+    "SELECT ImgDoc, CONCAT(fname,' ',lname) as Fullname, tservice, plab FROM dentist WHERE CenClinic = ?",
+    [req.body.id],
     (err, results) => {
       if (err) {
         console.log(err);

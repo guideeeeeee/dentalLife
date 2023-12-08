@@ -1,7 +1,7 @@
 
 const dataPatients = [
     {
-      imgpatient:'imagp/p1.jpg',
+      imgpatient:null,
       dataname:"Mr.Xxxxxx Xxxxxxx",
       dataAN:"b221545620",
       dataLA:"17/11/2560",

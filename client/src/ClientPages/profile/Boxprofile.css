@@ -25,6 +25,7 @@
 }
 
 .boxprofile .editInformation{
+    margin-top: 30px;
     background: #F1C376;
     display: flex;/*30-32ทำให้อยู่ตรงกลาง*/
     align-items: center;

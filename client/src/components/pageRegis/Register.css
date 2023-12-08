@@ -31,6 +31,7 @@
   margin-left: 10px;
 }
 .signUpbtn {
+  display:flex;
   background-color: #769FCD;
   border: 0 ;
   color: #ffffff;

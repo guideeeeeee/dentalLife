@@ -1,5 +1,6 @@
 import "./Boxpatient.css";
 import ApModal from "../../ClientPages/modal/ApModal"
+import Profile from "../../../public/images-tabbar/profile.svg";
 import { useState } from "react";
 function BoxPatient(props) {
   const { dataPatient } = props;
@@ -9,11 +10,12 @@ function BoxPatient(props) {
     setID(id);
     setModalstate(true);
   };
+  const imgSource = dataPatient.imgpatient ? dataPatient.imgpatient : Profile ;
   return (
     <div className="BoxPatient">
       {Modalstate && <ApModal setOpenModal={setModalstate} id={clientId} />}
       <div className="box">
-        <img className="imgpatient" src={dataPatient.imgpatient} />
+        <img className="imgpatient" src={imgSource} />
         <h5>
           <div className="dataname">{dataPatient.dataname}</div>
           <div className="dataAN">Number AN :{dataPatient.dataAn}</div>

@@ -93,8 +93,9 @@ export default function Register() {
               <div className="column-name-text">
                 <label>Tel:</label>
                 <input
-                  type="number"
+                  type="text"
                   name="Tel"
+                  maxLength={"10"}
                   value={formData.Tel}
                   onChange={handleChange}
                 />
@@ -269,14 +270,6 @@ export default function Register() {
           <span className="bottomClick">
             <li>LOG IN</li>
             <li>FORGOT PASSWORD?</li>
-            <li>
-              <a
-                href="https://www.youtube.com/watch?v=oUoge5ED6Yw"
-                className="tab-link"
-              >
-                <img id="img" src={home} alt="home" />
-              </a>
-            </li>
           </span>
         </ul>
       </div>

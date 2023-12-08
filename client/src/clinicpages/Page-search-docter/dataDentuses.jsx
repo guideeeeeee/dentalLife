@@ -1,7 +1,6 @@
-
 const dataDentises = [
     {
-      imgdentis:'imagdentis/d1.jpg',
+      imgdentis: null,
       dataname:"Dr. xxxxxx xxxxxx",
       dataTM:"Operative Dentistry",
       dataPLAB:" 0006742"

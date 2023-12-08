@@ -33,7 +33,7 @@ function BodySD({treat,doc}) {
     const DoctortoggleDropdown = async() => {
         console.log(clinicidd)
         try {
-            const response = await axios.post("http://localhost:3001/api/dataDent",{clinicID:clinicidd});// iddoc 
+            const response = await axios.post("http://localhost:3001/api/dataDent",{id:clinicidd});// iddoc 
             setdoctorActive(!doctorActive);
             setdoc(response.data)
             setdoctorActive(!doctorActive);
@@ -96,10 +96,10 @@ function BodySD({treat,doc}) {
                     {doctor.map((doctor, index) => (
                         <li
                             key={index}
-                            onClick={() => DoctorHandleOption(doctor.fname+" "+doctor.lname,doctor.plab)}
-                            className={SelectedDoctor === doctor.fname+" "+doctor.lname ? "selected" : ""}
+                            onClick={() => DoctorHandleOption(doctor.Fullname,doctor.plab)}
+                            className={SelectedDoctor === doctor.Fullname ? "selected" : ""}
                         >
-                            {doctor.fname+" "+doctor.lname}
+                            {doctor.Fullname}
                         </li>
                     ))}
                 </ul>

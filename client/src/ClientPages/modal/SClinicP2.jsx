@@ -33,7 +33,7 @@ function SclinicP2({ handleContinueClick, handleBackClick }) {
     
     const DoctortoggleDropdown = async () => {
         try {
-            const response = await axios.post("http://localhost:3001/api/dataDent",{clinicID:docid});// iddoc 
+            const response = await axios.post("http://localhost:3001/api/dataDent",{id:docid});// iddoc 
             setdoc(response.data)
             console.log(response.data);
             setdoctorActive(!doctorActive);
@@ -70,17 +70,17 @@ function SclinicP2({ handleContinueClick, handleBackClick }) {
                     onClick={DoctortoggleDropdown}
                 >
                     <div className="select">
-                        {SelectedDoctor || "Select Clinic"}
+                        {SelectedDoctor || "Select Doctor"}
                         <i className="icon">▼</i>
                     </div>
                     <ul className={`dropdown-menu `}>
                         {doctor.map((doctor, index) => (
                             <li
                                 key={index}
-                                onClick={() => DoctorHandleOption(doctor.fname+" "+doctor.lname,doctor.plab)}
-                                className={SelectedDoctor === doctor.fname+" "+doctor.lname ? "selected" : ""}
+                                onClick={() => DoctorHandleOption(doctor.Fullname,doctor.plab)}
+                                className={SelectedDoctor === doctor.Fullname ? "selected" : ""}
                             >
-                                {doctor.fname+" "+doctor.lname}
+                                {doctor.Fullname}
                             </li>
                         ))}
                     </ul>
