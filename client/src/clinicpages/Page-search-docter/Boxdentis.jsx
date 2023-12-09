@@ -14,8 +14,7 @@ function BoxDentis(props) {
         </h5>
         <button className="edit" style={{ cursor: "pointer" }}>
           <center>Edit Profile</center>
-        </button>{" "}
-        {/*ใส่ฟังชั่นทีหลัง*/}
+        </button>
       </div>
     </div>
   );

@@ -6,56 +6,30 @@ import { useState } from "react";
 import axios from "axios";
 import { getClinicuuid } from "../../../service/authorize.jsx";
 function EditDoctor() {
-  const navigate = useNavigate();
-  // image
-  const [imagedata, setImagedata] = useState({
-    ID_Dentistdashboard: null,
-    ImageDentist: null,
-  });
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    // Set the selected image URL for preview
-    const imageURL = URL.createObjectURL(file);
-    setSelectedImage(imageURL);
-    console.log("Image selected");
-    setImagedata((prevData) => ({
-      ...prevData,
-      ImageDentist: file
-    }));
-  };
-  const handleClearImage = () => {
-    // Clear the selected image
-    setSelectedImage(null);
-  
-    // Optionally, you can also clear the file input value if needed
-    const fileInput = document.getElementById("fileInput");
-    if (fileInput) {
-      fileInput.value = null;
-    }
-  };
 
-  // tservice
+  /// set select Craft ///
+
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [showOptions, setShowOptions] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const handleSelectionChange = (event) => {
-    const selectedValues = Array.from(
-      event.target.selectedOptions,
-      (option) => option.value
-    );
-    const selectedValuesString = selectedValues.join(",");
-    setSelectedOptions(selectedValues);
-    setFormData((prevData) => ({
-      ...prevData,
-      tservice: selectedValuesString,
-    }));
-  };
-  const handleToggleOptions = () => {
-    handlecraft();
-    setShowOptions(!showOptions);
-  };
+   /// get craft ///
+   const [craft, getCraft] = useState([]);
+   const handlecraft = async () => {
+     try {
+       const response = await axios.get("http://localhost:3001/api/craft");
+       getCraft(response.data);
+     } catch (error) {
+       console.error("fail to pulled:", error);
+     }
+   };
 
-  // dataform
+  /// set object image ///
+
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [fileImage, setFileImage] = useState(null);
+  const navigate = useNavigate();
+
+  /// dataform ///
+
   const [formData, setFormData] = useState({
     plab: null,
     fname: null,
@@ -93,41 +67,68 @@ function EditDoctor() {
     gender: null,
     ImgDoc:null,
   });
+
+  /// show&clear image ///
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setFileImage(file);
+    const imageURL = URL.createObjectURL(file);
+    setSelectedImage(imageURL);
+
+    console.log("Image selected");
+  };
+  const handleClearImage = () => {
+    setSelectedImage(null);
+    setFormData((prevData) =>({
+      ...prevData,
+      ImgDoc: null,
+    }))
+    const fileInput = document.getElementById("fileInput");
+    if (fileInput) {
+      fileInput.value = null;
+    }
+  };
+
+  /// option ///
+  const handleSelectionChange = (event) => {
+    const selectedValues = Array.from(
+      event.target.selectedOptions,
+      (option) => option.value
+    );
+    const selectedValuesString = selectedValues.join(",");
+    setSelectedOptions(selectedValues);
+    setFormData((prevData) => ({
+      ...prevData,
+      tservice: selectedValuesString,
+    }));
+  };
+  const handleToggleOptions = () => {
+    handlecraft();
+    setShowOptions(!showOptions);
+  };
+
+  /// setFormData ///
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  //summit
+  /// summit ///
   const handleSubmit = async (e) => {
-    setImagedata((prevData) => ({
-      ...prevData,
-      ID_Dentistdashboard: formData.plab
-    }));
     e.preventDefault();
+
     console.log(formData);
-    console.log(imagedata);
     try {
       const response = await axios.post(
         "http://localhost:3001/api/regisDent",
         formData
       );
-      //const response1 = await axios.post("http://localhost:3001/api/ImageDent",imagedata);
+      // console.log(fileImage);
+      // const response1 = await axios.post("http://localhost:3001/api/uploadDent",fileImage);
+      // console.log(response1.data)
       console.log(response.data);
-      //console.log(response1.data);
       navigate("/SearchDoc");
     } catch (error) {
       console.error("Registration failed:", error.response);
-    }
-  };
-
-  //get craft
-  const [craft, getCraft] = useState([]);
-  const handlecraft = async () => {
-    try {
-      const response = await axios.get("http://localhost:3001/api/craft");
-      getCraft(response.data);
-    } catch (error) {
-      console.error("fail to pulled:", error);
     }
   };
 
@@ -212,9 +213,6 @@ function EditDoctor() {
         <div className="bottomForm">
           <div className="part1">
             <div className="test">
-              {/* center clinic */}
-              {/* <text className="DocNormalText">Centers and Clinics :</text>
-              <input type="text" className="centers" name="CenClinic" value={formData.CenClinic} onChange={handleChange}></input> */}
               {/* language */}
               <text className="DocNormalText">Language:</text>
               <input

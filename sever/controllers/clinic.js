@@ -40,7 +40,6 @@ module.exports.scheduling = function (req, res, next) {
     }
   );
 };
-
 exports.regisDent = function (req, res, next) {
   db.execute(
     "INSERT INTO dentist VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
@@ -120,7 +119,7 @@ exports.edit = function (req, res, next) {
 exports.dataDent = (req, res, next) => {
   db.execute(
     "SELECT ImgDoc, CONCAT(fname,' ',lname) as Fullname, tservice, plab FROM dentist WHERE CenClinic = ?",
-    [req.body.id],
+    [req.body.id] ,
     (err, results) => {
       if (err) {
         console.log(err);

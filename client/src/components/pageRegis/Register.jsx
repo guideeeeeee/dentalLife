@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import Profile from "../../../public/images-tabbar/profile.svg";
 import home from "/images-login/home.svg";
 import { useNavigate } from "react-router-dom";
 import Tabbar from "../../ClientPages/Home/Tabbar";
@@ -10,6 +11,20 @@ export default function Register() {
   const navigate = useNavigate();
   const [passwordShown, setPasswordShown] = useState(false);
   const [pass1, setCheckPass] = useState();
+  const [selectedImage, setSelectedImage] = useState(null);
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const imageURL = URL.createObjectURL(file);
+    setSelectedImage(imageURL);
+    console.log("Image selected");
+  };
+  const handleClearImage = () => {
+    setSelectedImage(null);
+    const fileInput = document.getElementById("fileInput");
+    if (fileInput) {
+      fileInput.value = null;
+    }
+  };
   const showIcon = <VisibilityIcon />;
   const hideIcon = <VisibilityOffIcon />;
 
@@ -62,11 +77,41 @@ export default function Register() {
       <Tabbar />
       <div className="createApp">
         <h1>CREATE NEW ACCOUNT</h1>
+        <div className="imagepatient">
+              {selectedImage ? (
+                <>
+                  <img
+                    src={selectedImage}
+                    alt="selected"
+                    className="selected-image"
+                  />
+                  <button onClick={handleClearImage}>Clear Image</button>
+                </>
+              ) : (
+                <label htmlFor="fileInput">
+                  <img
+                    id="imagepatient"
+                    src={Profile}
+                    alt="profile"
+                    className="imagepatient"
+                  />
+                  <input
+                    type="file"
+                    id="fileInput"
+                    name="ImageDentist"
+                    onChange={handleImageChange}
+                    style={{ display: "none" }}
+                  />
+                </label>
+              )}
+            </div>
         <div className="form1">
           <form className="formleft" onSubmit={handleSubmit}>
+            
             {/* name */}
             <div className="column">
               <div className="column-name-text">
+                
                 <label>Firstname:*</label>
                 <input
                   type="text"
@@ -268,7 +313,6 @@ export default function Register() {
 
         <ul>
           <span className="bottomClick">
-            <li>LOG IN</li>
             <li>FORGOT PASSWORD?</li>
           </span>
         </ul>

@@ -42,6 +42,16 @@
   border-radius: 15px;
   padding: 10px;
 }
+.imagepatient{
+  display: flex;
+  flex-direction: column;
+}
+.imagepatient img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 .column-name-text label,.name-text label,.password-input label{
   margin-left: 5px;
 }

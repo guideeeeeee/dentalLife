@@ -3,6 +3,7 @@ import "../../components/pageRegis/Register.css";
 import React, { useState ,useEffect} from "react";
 import axios from "axios";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import Profile from "../../../public/images-tabbar/profile.svg";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import home from "/images-login/home.svg";
 import { Link, useNavigate } from "react-router-dom";
@@ -12,6 +13,20 @@ export default function EditInfo() {
   const navigate = useNavigate();
   const [passwordShown, setPasswordShown] = useState(false);
   const [pass1, setCheckPass] = useState();
+  const [selectedImage, setSelectedImage] = useState(null);
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const imageURL = URL.createObjectURL(file);
+    setSelectedImage(imageURL);
+    console.log("Image selected");
+  };
+  const handleClearImage = () => {
+    setSelectedImage(null);
+    const fileInput = document.getElementById("fileInput");
+    if (fileInput) {
+      fileInput.value = null;
+    }
+  };
   const showIcon = <VisibilityIcon />;
   const hideIcon = <VisibilityOffIcon />;
   const setuuid = getuuid();
@@ -83,6 +98,34 @@ export default function EditInfo() {
       <Tabbar />
       <div className="createApp">
         <h1>EDIT INFORMATION</h1>
+        <div className="imagepatient">
+              {selectedImage ? (
+                <>
+                  <img
+                    src={selectedImage}
+                    alt="selected"
+                    className="selected-image"
+                  />
+                  <button onClick={handleClearImage}>Clear Image</button>
+                </>
+              ) : (
+                <label htmlFor="fileInput">
+                  <img
+                    id="imagepatient"
+                    src={Profile}
+                    alt="profile"
+                    className="imagepatient"
+                  />
+                  <input
+                    type="file"
+                    id="fileInput"
+                    name="ImageDentist"
+                    onChange={handleImageChange}
+                    style={{ display: "none" }}
+                  />
+                </label>
+              )}
+            </div>
         <div className="form1">
           <form className="formleft" onSubmit={handleSubmit}>
             {/* name */}
