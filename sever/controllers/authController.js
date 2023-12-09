@@ -103,6 +103,7 @@ module.exports.profileClient = (req,res,next) => {
   });
   };
 
+
 module.exports.EditInfo = (req,res,next) => {
   db.execute("SELECT * FROM client WHERE uuid=?",
   [req.body.id],
