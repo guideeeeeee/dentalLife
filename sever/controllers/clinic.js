@@ -88,6 +88,7 @@ exports.regisDent = function (req, res, next) {
       res.json({ status: "register Complete" });
     }
   );
+  
 };
 
 exports.edit = function (req, res, next) {

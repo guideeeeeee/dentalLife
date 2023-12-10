@@ -25,7 +25,6 @@ function EditDoctor() {
   /// set object image ///
 
   const [selectedImage, setSelectedImage] = useState(null);
-  const [fileImage, setFileImage] = useState(null);
   const navigate = useNavigate();
 
   /// dataform ///
@@ -66,23 +65,20 @@ function EditDoctor() {
     wlocation5: null,
     gender: null,
     ImgDoc:null,
+    fileDoc:null,
   });
 
   /// show&clear image ///
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    setFileImage(file);
-    const imageURL = URL.createObjectURL(file);
-    setSelectedImage(imageURL);
-
+    setFormData((prevData) =>({
+      ...prevData,fileDoc: file
+    }));
+    setSelectedImage(URL.createObjectURL(file));
     console.log("Image selected");
   };
   const handleClearImage = () => {
     setSelectedImage(null);
-    setFormData((prevData) =>({
-      ...prevData,
-      ImgDoc: null,
-    }))
     const fileInput = document.getElementById("fileInput");
     if (fileInput) {
       fileInput.value = null;
@@ -115,20 +111,17 @@ function EditDoctor() {
   /// summit ///
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log(formData);
     try {
       const response = await axios.post(
         "http://localhost:3001/api/regisDent",
         formData
       );
-      // console.log(fileImage);
-      // const response1 = await axios.post("http://localhost:3001/api/uploadDent",fileImage);
-      // console.log(response1.data)
+      //const response1 = await axios.post("http://localhost:3001/api/uploadDent",Imgdata);
+      //console.log(response1.data)
       console.log(response.data);
       navigate("/SearchDoc");
     } catch (error) {
-      console.error("Registration failed:", error.response);
+      console.error("Registration failed:", error.response ,error.response1);
     }
   };
 
@@ -188,7 +181,7 @@ function EditDoctor() {
           <div className="imagedoc">
   {selectedImage ? (
     <>
-      <img src={selectedImage} alt="selected" className="selected-image" />
+      <img src={selectedImage} alt="selected" className="selected-image" name="file" />
       <button onClick={handleClearImage}>Clear Image</button>
     </>
   ) : (
@@ -202,7 +195,6 @@ function EditDoctor() {
       <input
         type="file"
         id="fileInput"
-        name="ImageDentist"
         onChange={handleImageChange}
         style={{ display: "none" }}
       />
