@@ -3,21 +3,25 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { getuuid } from '../../../service/authorize';
 import { useEffect, useState } from 'react';
-const setUuid= getuuid();
 function Boxprofile(){
     const [data,setData] = useState([]);
-    const fetchData = async () =>{
-        try{
-            const response = await axios.post("http://localhost:3001/auth/profileClient",{uuid:setUuid});
-            setData(response.data[0])
-        }
-        catch(e){
-            console.error("Failed to fetch data from mySQL:",e);
-        }
-    };
-    useEffect(()=>{fetchData();
+    const setUuid= getuuid();
+    console.log(data)
+    console.log(setUuid)
+    useEffect(()=>{
+        const fetchData = async () =>{
+            try{
+                const response = await axios.post("http://localhost:3001/auth/profileClient",{uuid:setUuid});
+                setData(response.data[0])
+            }
+            catch(e){
+                console.error("Failed to fetch data from mySQL:",e);
+            }
+        };
+        fetchData();
     },[]);
     const newDOB = new Date(data.DOB).toLocaleDateString('en-CA');
+  
     return(
         <div className='boxprofile'>
             <div className='flexin'>

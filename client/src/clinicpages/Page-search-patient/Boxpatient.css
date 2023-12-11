@@ -19,10 +19,11 @@
     transform: scale(0.995);
   }
 
-.BoxPatient div.edit{
+  
+  .BoxPatient div.edit{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 3px;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -35,7 +36,7 @@
     align-items: center;
     justify-content: center;
     top: 75px;
-    left: 9px;
+    left: 4px;
     width: 90%;
     height: 30px;
     background: #F7D08A;

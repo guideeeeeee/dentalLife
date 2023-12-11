@@ -7,9 +7,6 @@ import Tabbarclinic from '../Tabbarclinic/Tabbarclinic.jsx';
 import fetchDataFromMySQL from './dataDent.jsx';
 
 function PageserchDoc() {
-  const [searchText, setSearchText] = useState('');
-  const [dataDent, setDataDent] = useState([]);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -21,7 +18,11 @@ function PageserchDoc() {
     };
 
     fetchData();
-  }, []); // Empty dependency array to run the effect only once
+  }, []); 
+  const [searchText, setSearchText] = useState('');
+  const [dataDent, setDataDent] = useState([]);
+
+  // Empty dependency array to run the effect only once
 
   const filterDent = dataDent ? dataDent.filter((dataDent) => {
     return dataDent.dataname.includes(searchText);
@@ -40,7 +41,7 @@ function PageserchDoc() {
           <input
             className="app-search-input"
             type="text"
-            placeholder="    search patient"
+            placeholder="    search doctor"
             value={searchText}
             onChange={(event) => { setSearchText(event.target.value) }}
           />

@@ -33,7 +33,7 @@ function Tabbarclinic() {
             <img className='imgtab' src='images-tabbar\porfilewhite.png' />SHARCH PROFILE
           </button>
           <button className='appinment' style={{ cursor: 'pointer' }} onClick={openModal}>
-            <img className='imgtab' src='images-tabbar\calendar.png' />BOOK APPOINTMENT
+            <img className='imgtab' src='images-tabbar\calendar.png' />SCHEDULING
           </button>
           <button className="nav-item" onClick={handleLogout}>
               log out

@@ -20,7 +20,6 @@ module.exports.craft = function (req, res, next) {
   });
 };
 
-
 module.exports.scheduling = function (req, res, next) {
   db.execute(
     "INSERT INTO scheduling VALUES(?,?,?,?,?)",
@@ -39,6 +38,16 @@ module.exports.scheduling = function (req, res, next) {
       res.json({ status: "Scheduling Complete" });
     }
   );
+};
+
+exports.viewProfile = function (req, res, next) {
+  db.execute("select ??? from ", [req.body.uuid], (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(results);
+    }
+  });
 };
 exports.regisDent = function (req, res, next) {
   db.execute(
@@ -88,23 +97,47 @@ exports.regisDent = function (req, res, next) {
       res.json({ status: "register Complete" });
     }
   );
-  
 };
 
 exports.edit = function (req, res, next) {
   db.execute(
-    "UPDATE dentist SET Firstname = ?,Lastname = ?,Tel = ?,ID_line = ?,DentistCraft = ?,ID_card = ?,Religion = ?,Nationality = ?,DateOfBirth = ? WHERE ProfessionalLicenseNumber = ?;",
+    "UPDATE dentist SET VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
     [
+      req.body.plab,
       req.body.fname,
       req.body.lname,
-      req.body.Tel,
-      req.body.idLine,
-      req.body.craft,
-      req.body.uuid,
-      req.body.rlg,
-      req.body.nation,
-      req.body.DOB,
-      req.body.profesID,
+      req.body.tel,
+      req.body.IDLine,
+      req.body.tservice,
+      req.body.S_exper,
+      req.body.CenClinic,
+      req.body.language,
+      req.body.gYear1,
+      req.body.gYear2,
+      req.body.gYear3,
+      req.body.gS_exper1,
+      req.body.gS_exper2,
+      req.body.gS_exper3,
+      req.body.university1,
+      req.body.university2,
+      req.body.university3,
+      req.body.wduration1,
+      req.body.wduration2,
+      req.body.wduration3,
+      req.body.wduration4,
+      req.body.wduration5,
+      req.body.wS_exper1,
+      req.body.wS_exper2,
+      req.body.wS_exper3,
+      req.body.wS_exper4,
+      req.body.wS_exper5,
+      req.body.wlocation1,
+      req.body.wlocation2,
+      req.body.wlocation3,
+      req.body.wlocation4,
+      req.body.wlocation5,
+      req.body.gender,
+      req.body.ImgDoc,
     ],
     function (err, results, fields) {
       if (err) {
@@ -116,11 +149,10 @@ exports.edit = function (req, res, next) {
   );
 };
 
-
 exports.dataDent = (req, res, next) => {
   db.execute(
     "SELECT ImgDoc, CONCAT(fname,' ',lname) as Fullname, tservice, plab FROM dentist WHERE CenClinic = ?",
-    [req.body.id] ,
+    [req.body.id],
     (err, results) => {
       if (err) {
         console.log(err);
@@ -144,3 +176,14 @@ exports.dataSheduling = (req, res, next) => {
     }
   );
 };
+
+exports.clientbookinghistory = (req,res,next)=>{
+  db.execute(
+    "SELECT date, time, NameOfClinic, status, craft ,fname , lname, price,uuid FROM booking JOIN clinic ON booking.clinicID = clinic.ID_ClinicJOIN dentist ON booking.dentist = dentist.plabJOIN craft ON booking.craft = craft.nameOfcraft where uuid = ? ORDER BY date DESC;",
+    [req.body.clientuuid],
+    (err,results)=>{
+      if(err) console.log(err);
+      else res.send(results);
+    }
+  )
+}

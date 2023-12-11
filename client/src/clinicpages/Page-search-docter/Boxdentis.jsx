@@ -12,9 +12,10 @@ function BoxDentis(props) {
           <div className="dataTM">{dataDentis.dataTM}</div>
           <div className="dataPLAB">PLAB:{dataDentis.dataPLAB}</div>
         </h5>
-        <button className="edit" style={{ cursor: "pointer" }}>
-          <center>Edit Profile</center>
-        </button>
+        <div className="edit" style={{ cursor: "pointer" }}>
+        <button className="edit">Edit</button>
+        <button className="edit">Delete</button>
+        </div>
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ function BoxPatient(props) {
         <h5>
           <div className="dataname">{dataPatient.dataname}</div>
           <div className="dataAN">Number AN :{dataPatient.dataAn}</div>
-          <div className="dataLA">last appointment :{dataPatient.dataLA}</div>
+          <div className="dataLA">Tel :{dataPatient.dataLA}</div>
         </h5>
         <h6>
           <div className="dataAD">Appointment date :{dataPatient.dataAD}</div>
@@ -32,6 +32,7 @@ function BoxPatient(props) {
         <div className="edit" style={{ cursor: "pointer" }}>
             <button className="edit" onClick={handleEditButtonClick}>Booking</button>
             <button className="edit">View</button>
+            <button className="edit">Complete</button>
         </div>{" "}
         {/*ใส่ฟังชั่นทีหลัง*/}
       </div>

@@ -12,5 +12,7 @@ router.post("/regisDent",clinic.regisDent);
 router.put("/dentEdit",clinic.edit);
 router.post("/dataDent" , clinic.dataDent);
 router.post("/timebook",book.timeBook);
-router.post("/dataSheduling",clinic.dataSheduling)
+router.post("/dataSheduling",clinic.dataSheduling);
+router.post("/viewProfile",clinic.viewProfile);
+router.post("/clientbookinghistory",clinic.clientbookinghistory)
 module.exports = router;

@@ -38,7 +38,19 @@ module.exports.login = (req, res, next) => {
     }
   );
 };
-
+module.exports.viewTranscript = (req,res,next) => {
+  db.execute(`SELECT date, time, NameOfClinic, status, craft ,fname , lname, price
+  FROM booking 
+  JOIN clinic ON booking.clinicID = clinic.ID_Clinic
+  JOIN dentist ON booking.dentist = dentist.plab
+  JOIN craft ON booking.craft = craft.nameOfcraft where uuid = ? ORDER BY date DESC;`,[req.body.uuid],(err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(results);
+    }
+  })
+};
 module.exports.loginClinic = (req, res, next) => {
   db.execute(
     "SELECT * FROM clinic WHERE email=?",
