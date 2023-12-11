@@ -19,4 +19,6 @@ router.post("/clientbookinghistory",clinic.clientbookinghistory);
 router.post("/deleteDoc",clinic.deleteDoc);
 router.put("/cancel",clinic.cancel);
 router.put("/complete",clinic.complete);
+router.post("/clientbookinghistory",clinic.clientbookinghistory);
+router.post("/AvaiDate",book.AvaiDate)
 module.exports = router;

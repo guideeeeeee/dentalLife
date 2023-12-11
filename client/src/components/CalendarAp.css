@@ -86,13 +86,18 @@
   cursor: pointer;
   font-size: 100%;
 }
+.calendar-day.past-date{
+  background-color:#FFC6AC  ;
+  color: #fff;
+  cursor: not-allowed;
+}
 .time-AL.selected{
   background-color:#FFA45B;
   cursor: pointer;
   font-size: 55%;
 }
 .time-AL.unavailable {
-  background-color: #d9534f;
+  background-color: #FFC6AC;
   color: #fff;
   cursor: not-allowed;
 }

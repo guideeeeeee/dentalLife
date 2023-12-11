@@ -49,3 +49,30 @@ exports.timeBook = (req, res, next)=>{
     }
   )
 }
+exports.clientbookinghistory = (req,res,next)=>{
+  db.execute(
+    "SELECT b.*, c.fname, c.lname, price, c.tel FROM booking b JOIN craft c2 ON b.craft = c2.nameOfcraft JOIN client c ON b.uuid = c.uuid WHERE   b.clinicID = ? and b.status = ?  ORDER BY b.date ASC;",
+    [
+      req.body.clinicuuid,
+      req.body.status
+    ],
+    (err,results)=>{
+      if(err) console.log(err);
+      else res.send(results);
+    }
+  )
+}
+
+exports.AvaiDate = (req,res,next)=>{
+  db.execute(
+    "SELECT DateOfScheduling FROM dentallife2.scheduling where NameDentist = ?;",
+    [req.body.iDdoc],
+    (err,results)=>{
+      if(err){
+        console.log(err);
+      }else{
+        res.send(results)
+      }
+    }
+  )
+}

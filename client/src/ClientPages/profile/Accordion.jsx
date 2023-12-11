@@ -58,7 +58,8 @@ function Accordion() {
                 confirmButtonText: "Yes, Cancel it!"
             }).then(async (result) => {
                 if (result.isConfirmed) {
-                    await axios.put("http://localhost:3001/api/cancel", { date: new Date(date).toLocaleDateString('en-CA'), time: time ,uuid:setuuid})
+                    if(!setuuid){
+                        await axios.put("http://localhost:3001/api/cancel", { date: new Date(date).toLocaleDateString('en-CA'), time: time ,uuid:newuuid})
                         .then((res) => {
                             if (res.data.status === "Cancel Complete") {
                                 console.log("complete")
@@ -76,6 +77,27 @@ function Accordion() {
                         text: "Your file has been cancel.",
                         icon: "success"
                     }).then((res) => location.reload());
+                    }
+                    else{
+                        await axios.put("http://localhost:3001/api/cancel", { date: new Date(date).toLocaleDateString('en-CA'), time: time ,uuid:setuuid})
+                        .then((res) => {
+                            if (res.data.status === "Cancel Complete") {
+                                console.log("complete")
+                            }
+                            else {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: "Something went wrong!"
+                                });
+                            }
+                        })
+                    Swal.fire({
+                        title: "Cancel!",
+                        text: "Your file has been cancel.",
+                        icon: "success"
+                    }).then((res) => location.reload());
+                    }
                 }
             })
 

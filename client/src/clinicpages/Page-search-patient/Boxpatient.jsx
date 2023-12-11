@@ -17,8 +17,8 @@ function BoxPatient(props) {
     dispatch(setClientUuid(dataPatient.dataAN));
     navigate("/viewProfile");
   }
-  const handleEditButtonClick = (id) => {
-    setID(id);
+  const handleEditButtonClick = () => {
+    setID(dataPatient.dataAN);
     setModalstate(true);
   };
   const imgSource = dataPatient.imgpatient ? dataPatient.imgpatient : Profile ;

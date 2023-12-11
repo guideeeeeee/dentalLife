@@ -45,9 +45,9 @@ function Boxprofile(){
                     <p>Weight : {data.Weight}</p>
                     <p>Height : {data.Height}</p>
                     <p>Tel : {data.Tel}</p>
-                <Link to="/EditInfo" style={{ cursor: 'pointer' }}>
+                {setUuid ? <Link to="/EditInfo" style={{ cursor: 'pointer' }}>
                 <center><div className='editInformation'>EDIT INFORMATION</div></center>
-                </Link>
+                </Link> : <></>}
             </div>
         </div>
     )

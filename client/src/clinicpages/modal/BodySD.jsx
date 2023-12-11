@@ -1,28 +1,28 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { getClinicuuid } from "../../../service/authorize";
-function BodySD({treat,doc}) {
+function BodySD({doc}) {
 
-    //TREATMENT DATA
-    const [selectedTreatment, setselectedTreatment] = useState(null);
-    const [treatmentActive, settreatmentActive] = useState(false);
-    const [Treatment, setTreatment] = useState([]);
-    const toggleDropdownS1 = async() => {
-        try {
-            const response = await axios.get("http://localhost:3001/api/craft");
-            setTreatment(response.data);
-            console.log(Treatment)
-            settreatmentActive(!treatmentActive);
-            settreatmentActive(!treatmentActive);
-        } catch (error) {
-            console.error("Error toggling dropdown:", error);
-        }
-    };
-    const handleOptionClickS1 = (Treatment) => {
-        setselectedTreatment(Treatment);
-        settreatmentActive(false);
-        treat(Treatment);
-    };
+    // //TREATMENT DATA
+    // const [selectedTreatment, setselectedTreatment] = useState(null);
+    // const [treatmentActive, settreatmentActive] = useState(false);
+    // const [Treatment, setTreatment] = useState([]);
+    // const toggleDropdownS1 = async() => {
+    //     try {
+    //         const response = await axios.get("http://localhost:3001/api/craft");
+    //         setTreatment(response.data);
+    //         console.log(Treatment)
+    //         settreatmentActive(!treatmentActive);
+    //         settreatmentActive(!treatmentActive);
+    //     } catch (error) {
+    //         console.error("Error toggling dropdown:", error);
+    //     }
+    // };
+    // const handleOptionClickS1 = (Treatment) => {
+    //     setselectedTreatment(Treatment);
+    //     settreatmentActive(false);
+    //     treat(Treatment);
+    // };
 
 
     //DOCTOR DATA
@@ -52,7 +52,7 @@ function BodySD({treat,doc}) {
     return (
         <div className="body">
 
-            {/* Treatment */}
+            {/* Treatment
             <h5 style={{ lineHeight: "2", textAlign: "left", color: "#A0C49D" }}>
                 Treatment
             </h5>
@@ -75,7 +75,7 @@ function BodySD({treat,doc}) {
                         </li>
                     ))}
                 </ul>
-            </div>
+            </div> */}
 
 
 

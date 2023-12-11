@@ -6,45 +6,55 @@ import "./SDcalendar.css";
 import { renderCalendar } from '../../data/RenderCalendar';
 import axios from 'axios';
 import { getuuid } from '../../../service/authorize';
-const timeAvailable = ["11:00 am", "11:30 am", "12:00 pm", "12:30 pm", "01:00 pm", "01:30 pm", "02:00 pm",
-    "02:30 pm", "03:00 pm", "03:30 pm", "04:00 pm", "04:30 pm", "05:00 pm", "05:30 pm", "06:00 pm", "06:30 pm"];
+// const timeAvailable = ["11:00 am", "11:30 am", "12:00 pm", "12:30 pm", "01:00 pm", "01:30 pm", "02:00 pm",
+//     "02:30 pm", "03:00 pm", "03:30 pm", "04:00 pm", "04:30 pm", "05:00 pm", "05:30 pm", "06:00 pm", "06:30 pm"];
 
 
-function SDcalendar({ Time, date }) {
+function SDcalendar({ date }) {
     const [currentDate, setCurrentDate] = useState(moment());
     const gendate = renderCalendar(currentDate);
     const [selectedDate, setSelectedDate] = useState(null);
-    const [selectedTime, setSelectedTime] = useState(null);
-    const [timenotavailable, settimenot] = useState({ time: [] });
+    // const [selectedTime, setSelectedTime] = useState(null);
+    // const [timenotavailable, settimenot] = useState({ time: [] });
     const uuid = getuuid()
     const handleDateClick = async (day) => {
         setSelectedDate(day);
-        setSelectedTime(null);
+        // setSelectedTime(null);
         date(day);
-        try {
-            const response = await axios.post("http://localhost:3001/api/dataSheduling", { date: day, id: uuid });
-            // console.log(response.data);
-            const notAvailableTimes = response.data.map(item => item.TimeOfScheduling);
-            settimenot({ time: [...notAvailableTimes] });
-        } catch (error) {
-            console.error("Error fetching data:", error);
+        // try {
+        //     const response = await axios.post("http://localhost:3001/api/dataSheduling", { date: day, id: uuid });
+        //     // console.log(response.data);
+        //     const notAvailableTimes = response.data.map(item => item.TimeOfScheduling);
+        //     settimenot({ time: [...notAvailableTimes] });
+        // } catch (error) {
+        //     console.error("Error fetching data:", error);
+        // }
+    };
+    // const handleTimeClick = (time) => {
+    //     setSelectedTime(time);
+    //     // console.log(time);
+    //     Time(time);
+    // };
+    // const isTimeSlotAvailable = (time) => {
+    //     return !timenotavailable.time.includes(time);
+    // };
+    const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    const handlePrevMonthClick = () => {
+        const previousMonth = moment(currentDate).subtract(1, 'month');
+        if (!previousMonth.isSame(currentDate, 'month')) {
+            setCurrentDate(previousMonth);
         }
     };
-    const handleTimeClick = (time) => {
-        setSelectedTime(time);
-        // console.log(time);
-        Time(time);
+    const isPastDate = (date) => {
+        return moment(date).isBefore(moment(), 'day');
     };
-    const isTimeSlotAvailable = (time) => {
-        return !timenotavailable.time.includes(time);
-    };
-    const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    
     return (
         <div>
             <div className="headCalenn">
                 <h5>{currentDate.format('MMMM YYYY')}</h5>
                 <div className="inGridd">
-                    <button onClick={() => setCurrentDate(moment(currentDate).subtract(1, 'month'))} type="button">
+                <button onClick={handlePrevMonthClick} type="button" disabled={moment().isSame(currentDate, 'month')}>
                         <img src={chevronLeft} alt="Left Arrow" />
                     </button>
                     <button onClick={() => setCurrentDate(moment(currentDate).add(1, 'month'))} type="button">
@@ -65,13 +75,15 @@ function SDcalendar({ Time, date }) {
                         </div>
                     ))}
                     {gendate.date.map((date, index) => (
-                        <div key={gendate.id[index]} className={`calendar-dayy ${selectedDate === gendate.id[index] ? 'selectedd' : ''}`}
-                            onClick={() => handleDateClick(gendate.id[index])}>
-                            {date}
-                        </div>
+                        <div
+                        key={gendate.id[index]}
+                        className={`calendar-dayy ${selectedDate === gendate.id[index] ? 'selectedd' : ''} ${isPastDate(gendate.id[index]) ? 'past-datee' : ''}`}
+                        onClick={() => handleDateClick(gendate.id[index])}>
+                        {date}
+                    </div>
                     ))}
                 </div>
-                <div className="timeGridd">
+                {/* <div className="timeGridd">
                     {timeAvailable.map(time => (
                         <div
                             key={time}
@@ -84,7 +96,7 @@ function SDcalendar({ Time, date }) {
                             {time}
                         </div>
                     ))}
-                </div>
+                </div> */}
             </div>
         </div>
     );

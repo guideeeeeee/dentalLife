@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import chevronLeft from "/assets/chevron_left_FILL0_wght400_GRAD0_opsz24.png";
 import chevronRight from "/assets/chevron_right_FILL0_wght400_GRAD0_opsz24.png";
@@ -7,6 +7,7 @@ import { renderCalendar } from '../data/RenderCalendar';
 import { AddDate, Addtime } from '../store/slices/BookingSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from "axios";
+
 const timeAvailable = ["11:00 am", "11:30 am", "12:00 pm", "12:30 pm", "01:00 pm", "01:30 pm", "02:00 pm",
     "02:30 pm", "03:00 pm", "03:30 pm", "04:00 pm", "04:30 pm", "05:00 pm", "05:30 pm", "06:00 pm", "06:30 pm"];
 
@@ -17,31 +18,31 @@ function Calendar() {
     const gendate = renderCalendar(currentDate);
     const [selectedDate, setSelectedDate] = useState(useSelector((state) => state.Booking.date));
     const [selectedTime, setSelectedTime] = useState(useSelector((state) => state.Booking.time));
-    const handleDateClick = async(day) => {
+    const docId = useSelector((state) => state.Booking.selecDoc)
+    
+    const handleDateClick =  (day) => {
+        // Check if the selected date is available
         setSelectedDate(day);
         setSelectedTime(null);
-        // console.log(currentDate.format('YYYY-MM-DD'));
-        // console.log(selectedTime);
         dispatch(AddDate(day));
-        
     };
-    const [timenotavailable,settimenot] = useState({ time: [] });
+    const [timenotavailable, settimenot] = useState({ time: [] });
     useEffect(() => {
         const fetchTimeAvailability = async () => {
             try {
-                const response = await axios.post("http://localhost:3001/api/timebook", { date: selectedDate });
-                // console.log(response.data);
+
+                const response = await axios.post("http://localhost:3001/api/timebook", { date: selectedDate, docid: docId });
                 const data = response.data;
                 const notAvailableTimes = data.filter(item => item.status === "Not Complete").map(item => item.time);
-                settimenot({ time: [ ...notAvailableTimes] }); 
+                settimenot({ time: [...notAvailableTimes] });
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
-
         if (selectedDate) {
             fetchTimeAvailability();
         }
+
     }, [selectedDate]);
     const handleTimeClick = (time) => {
         setSelectedTime(time);
@@ -49,18 +50,24 @@ function Calendar() {
         dispatch(Addtime(time))
     };
     const isTimeSlotAvailable = (time) => {
-
-        return !timenotavailable.time.includes(time); 
+        return !timenotavailable.time.includes(time);
     };
-
+    const handlePrevMonthClick = () => {
+        const previousMonth = moment(currentDate).subtract(1, 'month');
+        if (!previousMonth.isSame(currentDate, 'month')) {
+            setCurrentDate(previousMonth);
+        }
+    };
+    const isPastDate = (date) => {
+        return moment(date).isBefore(moment(), 'day');
+    };
     const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-
     return (
         <div>
             <div className="headCalen">
                 <h5>{currentDate.format('MMMM YYYY')}</h5>
                 <div className="inGrid">
-                    <button onClick={() => setCurrentDate(moment(currentDate).subtract(1, 'month'))} type="button">
+                    <button onClick={handlePrevMonthClick} type="button" disabled={moment().isSame(currentDate, 'month')}>
                         <img src={chevronLeft} alt="Left Arrow" />
                     </button>
                     <button onClick={() => setCurrentDate(moment(currentDate).add(1, 'month'))} type="button">
@@ -81,8 +88,13 @@ function Calendar() {
                         </div>
                     ))}
                     {gendate.date.map((date, index) => (
-                        <div key={gendate.id[index]} className={`calendar-day ${selectedDate === gendate.id[index] ? 'selected' : ''}`}
-                            onClick={() => handleDateClick(gendate.id[index])}>
+                        <div
+                            key={gendate.id[index]}
+                            className={`calendar-day ${selectedDate === gendate.id[index] ? 'selected' : ''} ${isPastDate(gendate.id[index]) ? 'past-date' : ''} `}
+                            onClick={() => {
+                                handleDateClick(gendate.id[index])
+                                    
+                            }}>
                             {date}
                         </div>
                     ))}

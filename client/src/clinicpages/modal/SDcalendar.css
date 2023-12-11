@@ -1,123 +1,129 @@
 .headCalen {
-    margin-top: 10px;
-    display: grid;
-    grid-template-columns: auto auto;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.inGridd {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.calendar-dayss {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(auto, 1fr));
+
+}
+
+.calendar-day-namee {
+  color: #A0C49D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inGridd button{
+  display: flex;
+  align-items: center;
+  background-color: #A0C49D;
+  border: none;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  margin: 4px 4px;
+  border-radius: 8px;
+}
+
+.headCalenn h5{
+  display: flex;
+  color: #A0C49D;
+  align-items: center;
+  font-size: 200%;
+}
+.calendar-dayy{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80%;
+  background-color: #F6FBF4;
+  margin:2px ;
+  border-radius: 10px;
+  height: 30px; 
+  cursor: pointer;
+}
+
+.calendar-dayy:hover{
+  background-color: #D0E7D2;
+  font-size: 100%;
+}
+.calendar-dayy.selectedd{
+  background-color: #A0C49D;
+  cursor: pointer;
+  font-size: 100%;
+}
+.calendar-dayy.past-datee{
+  background-color:#BFCCB5  ;
+  color: #fff;
+  cursor: not-allowed;
+}
+.CT-inGridd{
+  /* display: grid;
+  grid-template-columns: 2fr 1fr; */
+  align-items: start;
+}
+
+.time-ALL{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 70%;
+  background-color: #F6FBF4;
+  margin:2px ;
+  border-radius: 10px;
+  height: 25px; 
+  cursor: pointer;
+}
+.time-ALL:hover{
+  background-color: #D0E7D2;
+}
+.timeGridd{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+
+
+.time-ALL.selectedd{
+  background-color: #A0C49D;
+  cursor: pointer;
+  font-size: 80%;
+}
+.time-ALL.unavailablee {
+  background-color: #d9534f;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: 768px) {
+  .headCalenn {
+    grid-template-columns: 1fr; 
   }
+
   .inGridd {
-    display: flex;
-    gap: 10px;
-    justify-content: flex-end;
+    justify-content: center; 
   }
-  
-  .calendar-dayss {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(auto, 1fr));
-  
+
+  .calendar-day-namee{
+    font-size:40%
   }
-  
-  .calendar-day-namee {
-    color: #A0C49D;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .inGridd button,
+  .headCalenn h5,
+  .calendar-dayy,.calendar-dayy:hover,.calendar-dayy.selectedd{
+    font-size: 80%; 
   }
-  
-  .inGridd button{
-    display: flex;
-    align-items: center;
-    background-color: #A0C49D;
-    border: none;
-    transition-duration: 0.2s;
-    cursor: pointer;
-    margin: 4px 4px;
-    border-radius: 8px;
-  }
-  
-  .headCalenn h5{
-    display: flex;
-    color: #A0C49D;
-    align-items: center;
-    font-size: 200%;
-  }
-  .calendar-dayy{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 80%;
-    background-color: #F6FBF4;
-    margin:2px ;
-    border-radius: 10px;
-    height: 30px; 
-    cursor: pointer;
-  }
-  
-  .calendar-dayy:hover{
-    background-color: #D0E7D2;
-    font-size: 100%;
-  }
-  .calendar-dayy.selectedd{
-    background-color: #A0C49D;
-    cursor: pointer;
-    font-size: 100%;
-  }
-  .CT-inGridd{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    align-items: start;
-  }
-  
-  .time-ALL{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 70%;
-    background-color: #F6FBF4;
-    margin:2px ;
-    border-radius: 10px;
-    height: 25px; 
-    cursor: pointer;
-  }
-  .time-ALL:hover{
-    background-color: #D0E7D2;
+  .time-ALL,.time-ALL:hover,.time-ALL.selectedd{
+    font-size:40%;
   }
   .timeGridd{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
-  
-
-  .time-ALL.selectedd{
-    background-color: #A0C49D;
-    cursor: pointer;
-    font-size: 80%;
-  }
-  .time-ALL.unavailablee {
-    background-color: #d9534f;
-    color: #fff;
-    cursor: not-allowed;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .headCalenn {
-      grid-template-columns: 1fr; 
-    }
-  
-    .inGridd {
-      justify-content: center; 
-    }
-  
-    .calendar-day-namee{
-      font-size:40%
-    }
-    .inGridd button,
-    .headCalenn h5,
-    .calendar-dayy,.calendar-dayy:hover,.calendar-dayy.selectedd{
-      font-size: 80%; 
-    }
-    .time-ALL,.time-ALL:hover,.time-ALL.selectedd{
-      font-size:40%;
-    }
-    .timeGridd{
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-  }
+}

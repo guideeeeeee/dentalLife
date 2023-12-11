@@ -1,13 +1,13 @@
 import { createSlice , current} from '@reduxjs/toolkit'
-import moment from 'moment'
 const initialState = {
     selecClinic:null,
     selecTreat:null,
     selecDoc:null,
-    date:moment().format('YYYY-MM-DD'),
+    date:null,
     status:null,
     id:null,
     time:null,
+    namedoc:null,
 }
 const BookingSlice = createSlice({
     name: 'Booking',
@@ -41,6 +41,10 @@ const BookingSlice = createSlice({
             state.time = action .payload
             console.log(current(state))
         },
+        Addnamedoc:(state,action)=>{
+            state.namedoc = action.payload
+            console.log(current(state))
+        }
     }
 })
 
