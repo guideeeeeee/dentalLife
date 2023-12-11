@@ -6,6 +6,7 @@ import SclinicP3 from "./SClinicP3.jsx";
 import {useSelector } from 'react-redux';
 import axios from "axios";
 import { getuuid } from "../../../service/authorize.jsx";
+import Swal from 'sweetalert2'
 function ApModal({ setOpenModal,id }) {
   const [currentStep, setCurrentStep] = useState(1);
   const selecClinic = useSelector((state) => state.Booking.id);
@@ -32,10 +33,20 @@ function ApModal({ setOpenModal,id }) {
       console.log(response.data);
       if (response.data.status === "Booking Complete") {
         console.log("done")
-        alert("Booking Complete");
+        Swal.fire({
+          title: "Booking Complete!",
+          text: "Thank you",
+          icon: "success"
+        }).then(() => {
+          location.reload();
+        });
         setOpenModal(false);
       } else {
-        alert("Booking fail " + response.data.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
       }
     })
       .catch((error) => {

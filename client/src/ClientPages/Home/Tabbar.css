@@ -48,6 +48,7 @@
     align-items: center;
     justify-content: space-around;
     margin-left: 5px;
+    margin-right: 15px;
 
 }
 
@@ -66,7 +67,7 @@
     color: white;
     border-radius: 10px;
     padding: 5px;
-    border-color: #769FCD;
+    border: solid ;
     cursor: pointer;
     transition: 0.7s ease;
 }

@@ -37,43 +37,13 @@
 
 .Pagesearchpa .app-search img{
     position: absolute;
-    right: 33rem;
+    right: 28rem;
     top: 10.7rem;
     height: 25px;
     width: auto;
 }
 
-.Pagesearchpa div.app-search button{
-    position: absolute;
-    display: block;
-    background: #F1C376;
-    padding: 20px 40px;
-    border-radius: 20px;
-    right: 14rem;
-    top: 10.2rem;
-    border: 0;
-}
 
-.Pagesearchpa div.app-search button:hover{/*ดักจับเหต์การเมื่อเอาเมาส์วาง*/
-    transform: scale(0.995);/*ย่อเมื่อเมาส์วางดูรูปแบบจากtiktok*/   
-
-}
-
-.Pagesearchpa div.app-search button:active {/*ดักจับเหต์การเมื่อเอาเมาส์กด*/
-    background-color: #a6d1a0;
-    transform: scale(0.995);
-  }
-
-  .Pagesearchpa div.app-search button img{
-    position: absolute;
-    border-radius: 20px;
-    border: 0;
-    z-index: 5;
-    left: 25px;
-    width: 30px;
-    height: auto;
-    top: 4px;
-}/*ช่องค้นหา*/
 
 
 

@@ -51,7 +51,7 @@
     position: relative;
     display: flex;/*ทำให้อยู่ตรงกลางเส้นเดียวกัน*/
     align-items: center;
-    padding-right: 6px;
+    padding-right: 12px;
     border: none;
     background: none;
     font-size: 12px;

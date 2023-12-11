@@ -6,6 +6,7 @@ import { authentication } from "../../../service/authorize";
 import Tabbar from "../../ClientPages/Home/Tabbar";
 import {addClient} from "../../store/slices/ClientSlice";
 import { useDispatch } from "react-redux";
+import Swal from 'sweetalert2'
 function Login_main() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -24,7 +25,11 @@ function Login_main() {
           dispatch(addClient(response.data.user))
           authentication(response, ()=>navigate("/"))
         } else {
-          alert("Login failed. " + response.data.message);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "No user found",
+          });
         }
       })
       .catch((error) => {

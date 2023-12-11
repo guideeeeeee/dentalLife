@@ -4,25 +4,39 @@ import Null from './Null.jsx';
 import Buttonchange from './Buttonchange.jsx';
 import Boxdentis from './Boxdentis';
 import Tabbarclinic from '../Tabbarclinic/Tabbarclinic.jsx';
-import fetchDataFromMySQL from './dataDent.jsx';
-
+// import fetchDataFromMySQL from './dataDent.jsx';
+import axios from 'axios';
+import { getClinicuuid } from '../../../service/authorize.jsx';
 function PageserchDoc() {
+  const [searchText, setSearchText] = useState('');
+  const [dataDent, setDataDent] = useState([]);
+
   useEffect(() => {
+    const uuidclinic = getClinicuuid();
     const fetchData = async () => {
       try {
-        const data = await fetchDataFromMySQL();
-        setDataDent(data);
+        const response = await axios.post("http://localhost:3001/api/dataDent",{id:uuidclinic});
+        // Assuming the API response data is an array of objects
+        const dentistsFromAPI = response.data;
+        // Map the received data to the desired structure
+        const dataDentises = dentistsFromAPI.map(dentist => {
+          return {
+            imgdentis: dentist.ImgDoc,
+            dataname: dentist.Fullname,
+            dataTM: dentist.tservice,
+            dataPLAB: dentist.plab 
+          };
+        });
+        console.log(dataDentises)
+        setDataDent(dataDentises);
+        // return dataDentises;
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Failed to fetch data from MySQL:", error);
       }
     };
 
     fetchData();
-  }, []); 
-  const [searchText, setSearchText] = useState('');
-  const [dataDent, setDataDent] = useState([]);
-
-  // Empty dependency array to run the effect only once
+  }, []); // Empty dependency array to run the effect only once
 
   const filterDent = dataDent ? dataDent.filter((dataDent) => {
     return dataDent.dataname.includes(searchText);
@@ -41,7 +55,7 @@ function PageserchDoc() {
           <input
             className="app-search-input"
             type="text"
-            placeholder="    search doctor"
+            placeholder="    search patient"
             value={searchText}
             onChange={(event) => { setSearchText(event.target.value) }}
           />

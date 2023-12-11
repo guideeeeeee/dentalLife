@@ -9,8 +9,17 @@
     border: 0;
 }
 
-.BoxDentiss button.edit{
-    position: relative;
+.BoxDentiss .box .grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3px;
+    max-width: 100%;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+
+.BoxDentiss .box button.edit{
     color: #ffffff;
     display: block;/*30-32ทำให้อยู่ตรงกลาง*/
     align-items: center;
@@ -19,7 +28,7 @@
     left: 4px;
     width: 90%;
     height: 30px;
-    background: #F7D08A;
+    background: #A0C49D;
     bottom: 0;
     border-radius: 30px;
     border: 0;
@@ -35,14 +44,6 @@
     transform: scale(0.995);
   }
 
-.BoxDentiss .box div.edit{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 3px;
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 .BoxDentiss .edit:hover{/*ดักจับเหต์การเมื่อเอาเมาส์วาง*/
     transform: scale(0.995);/*ย่อเมื่อเมาส์วางดูรูปแบบจากtiktok*/   
@@ -56,7 +57,7 @@
 
 .BoxDentiss .box .imgdentis{
     width: 80px;
-    margin:20px 0px 0px 20px;
+    margin:20px 0px 0px 30px;
     border-radius: 50px;
 }
 

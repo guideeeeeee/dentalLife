@@ -22,7 +22,7 @@
   
   .BoxPatient div.edit{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 3px;
     max-width: 100%;
     margin-left: auto;
@@ -41,7 +41,7 @@
     height: 30px;
     background: #F7D08A;
     bottom: 0;
-    border-radius: 30px;
+    border-radius: 20px;
     border: 0;
 }
 
@@ -57,7 +57,7 @@
 
   .BoxPatient .imgpatient{
     width: 80px;
-    margin:20px 0px 0px 20px;
+    margin:20px 0px 0px 33px;
     border-radius: 50px;
 }
 

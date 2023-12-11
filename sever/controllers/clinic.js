@@ -177,13 +177,28 @@ exports.dataSheduling = (req, res, next) => {
   );
 };
 
-exports.clientbookinghistory = (req,res,next)=>{
+exports.clientbookinghistory = (req, res, next) => {
   db.execute(
     "SELECT date, time, NameOfClinic, status, craft ,fname , lname, price,uuid FROM booking JOIN clinic ON booking.clinicID = clinic.ID_ClinicJOIN dentist ON booking.dentist = dentist.plabJOIN craft ON booking.craft = craft.nameOfcraft where uuid = ? ORDER BY date DESC;",
     [req.body.clientuuid],
-    (err,results)=>{
-      if(err) console.log(err);
+    (err, results) => {
+      if (err) console.log(err);
       else res.send(results);
+    }
+  )
+}
+
+exports.deleteDoc = (req, res, next) => {
+  db.execute(
+    "DELETE FROM dentist where plab = ?;",
+    [req.body.plab],
+    function (err, results, fields) {
+      if (err) {
+        res.json({ status: "error", message: err });
+        return;
+      }
+      console.log(req.body.plab);
+      res.json({ status: "Delete Complete" });
     }
   )
 }
