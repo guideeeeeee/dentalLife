@@ -1,6 +1,6 @@
 .boxflex  .boxAPM{
     background: #fffdfd;
-    width: 600px;
+    width: 800px;
     max-height: 340px;
     border-radius: 30px;
     padding: 10px;
@@ -19,7 +19,7 @@
 }
 
 .boxflex .addnew{
-    font-size: 14px;
+    font-size: 20px;
     width: 120px;
     height: 22px;
     margin-left: 15px;
@@ -37,7 +37,7 @@
     display: grid;
     grid-template-columns: repeat(4,1fr);
     margin-left: 25px;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 100;
     font-weight: bold;
     color: #4682A9;

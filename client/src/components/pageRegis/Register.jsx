@@ -4,9 +4,9 @@ import axios from "axios";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import Profile from "../../../public/images-tabbar/profile.svg";
-import home from "/images-login/home.svg";
 import { useNavigate } from "react-router-dom";
 import Tabbar from "../../ClientPages/Home/Tabbar";
+import Swal from "sweetalert2";
 export default function Register() {
   const navigate = useNavigate();
   const [passwordShown, setPasswordShown] = useState(false);
@@ -57,7 +57,11 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.Password !== pass1) {
-      window.alert("Password and confirm password do not match");
+      Swal.fire({
+        icon: "error",
+        title: "รหัสผ่านไม่ตรงกัน",
+        text: "โปรดกรอกใหม่อีกครั้ง!",
+      });
       return;
     }
     try {
@@ -66,6 +70,10 @@ export default function Register() {
         formData
       );
       console.log(response.data);
+      Swal.fire({
+        icon: "success",
+        title: "สมัครสมาชิกสำเร็จ",
+      });
       navigate("/ClientLogin");
     } catch (error) {
       console.error("Registration failed:", error);
@@ -140,6 +148,8 @@ export default function Register() {
                 <input
                   type="text"
                   name="Tel"
+                  pattern={"[0-9]*"}
+                  minLength={"10"}
                   maxLength={"10"}
                   value={formData.Tel}
                   onChange={handleChange}

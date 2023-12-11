@@ -21,7 +21,7 @@ function Pagesearchpa() {
           dataname: res.fname + res.lname,
           dataAN: res.uuid,
           Tel: res.tel,
-          dataAD: res.date.split('T')[0],
+          dataAD:  new Date(res.date).toLocaleDateString('en-CA'),
           datatime: res.time,
           dataRFA: res.craft,
           dataprice: res.price

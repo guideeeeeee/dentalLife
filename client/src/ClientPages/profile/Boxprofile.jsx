@@ -3,13 +3,24 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { getuuid } from '../../../service/authorize';
 import { useEffect, useState } from 'react';
+import {useSelector } from 'react-redux';
 function Boxprofile(){
     const [data,setData] = useState([]);
+    const newuuid = useSelector((state)=>state.Clinic.clientUuid);
     const setUuid= getuuid();
     console.log(data)
-    console.log(setUuid)
     useEffect(()=>{
         const fetchData = async () =>{
+           if(!setUuid){
+            try{
+                const response = await axios.post("http://localhost:3001/auth/profileClient",{uuid:newuuid});
+                setData(response.data[0])
+            }
+            catch(e){
+                console.error("Failed to fetch data from mySQL:",e);
+            }
+           }
+           else{
             try{
                 const response = await axios.post("http://localhost:3001/auth/profileClient",{uuid:setUuid});
                 setData(response.data[0])
@@ -17,6 +28,7 @@ function Boxprofile(){
             catch(e){
                 console.error("Failed to fetch data from mySQL:",e);
             }
+           }
         };
         fetchData();
     },[]);

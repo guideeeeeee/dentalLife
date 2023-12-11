@@ -2,10 +2,18 @@ import "./Boxdentiss.css";
 import Profile from "../../../public/images-tabbar/profile.svg"
 import Swal from "sweetalert2";
 import axios from "axios";
-
+import { useNavigate ,useParams} from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setPlab } from "../../store/slices/ClinicSlice";
 function BoxDentis(props) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { dataDentis } = props;
   const imgSource = dataDentis.imgdentis ? dataDentis.imgdentis : Profile;
+  const EditnDoc = () =>{
+    dispatch(setPlab(dataDentis.dataPLAB));
+    navigate(`/EditnDoc`)
+  }
   const deleteDoc = () => {
     console.log(dataDentis.dataPLAB);
     try {
@@ -57,7 +65,7 @@ function BoxDentis(props) {
           <div className="dataPLAB">PLAB:{dataDentis.dataPLAB}</div>
         </h5>
         <div className="grid" style={{ cursor: "pointer" }}>
-          <button className="edit">Edit</button>
+          <button className="edit" onClick={EditnDoc}>Edit</button>
           <button className="edit" onClick={deleteDoc}>Delete</button>
         </div>
       </div>

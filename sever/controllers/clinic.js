@@ -98,12 +98,19 @@ exports.regisDent = function (req, res, next) {
     }
   );
 };
-
+exports.fetchDent = function(req,res,next){
+  db.execute("SELECT * FROM dentist where plab = ?",[req.body.plab],(err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(results);
+    }
+  });
+}
 exports.edit = function (req, res, next) {
   db.execute(
-    "UPDATE dentist SET VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+    "UPDATE dentist SET fname = ?, lname = ?, tel = ?, IDLine = ?, tservice = ?, S_exper = ?, CenClinic = ?, language = ?, gYear1 = ?, gYear2 = ?, gYear3 = ?, gS_exper1 = ?, gS_exper2 = ?, gS_exper3 = ?, university1 = ?, university2 = ?, university3 = ?, wduration1 = ?, wduration2 = ?, wduration3 = ?, wduration4 = ?, wduration5 = ?, wS_exper1 = ?, wS_exper2 = ?, wS_exper3 = ?, wS_exper4 = ?, wS_exper5 = ?, wlocation1 = ?, wlocation2 = ?, wlocation3 = ?, wlocation4 = ?, wlocation5 = ?, gender = ? ,ImgDoc = ?   where plab = ?;",
     [
-      req.body.plab,
       req.body.fname,
       req.body.lname,
       req.body.tel,
@@ -138,6 +145,7 @@ exports.edit = function (req, res, next) {
       req.body.wlocation5,
       req.body.gender,
       req.body.ImgDoc,
+      req.body.plab
     ],
     function (err, results, fields) {
       if (err) {
@@ -202,6 +210,43 @@ exports.deleteDoc = (req, res, next) => {
       }
       console.log(req.body.plab);
       res.json({ status: "Delete Complete" });
+    }
+  )
+}
+
+exports.cancel = (req, res, next) => {
+  db.execute(
+    "UPDATE booking SET status = 'Cancel' WHERE date = ? AND time = ? and uuid = ?;",
+    [
+      req.body.date,
+      req.body.time,
+      req.body.uuid
+    ],
+    function (err, results, fields) {
+      if (err) {
+        res.json({ status: "error", message: err });
+        return;
+      }
+      console.log(req.body.plab);
+      res.json({ status: "Cancel Complete" });
+    }
+  )
+}
+
+exports.complete = (req, res, next) => {
+  db.execute(
+    "UPDATE booking SET status = 'Complete' WHERE date = ? AND time = ? and uuid = ?;",
+    [
+      req.body.date,
+      req.body.time,
+      req.body.uuid
+    ],
+    function (err, results, fields) {
+      if (err) {
+        res.json({ status: "error", message: err });
+        return;
+      }
+      res.json({ status: "Cancel Complete" });
     }
   )
 }

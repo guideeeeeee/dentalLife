@@ -55,7 +55,7 @@ function PageserchDoc() {
           <input
             className="app-search-input"
             type="text"
-            placeholder="    search patient"
+            placeholder="    search Doctor"
             value={searchText}
             onChange={(event) => { setSearchText(event.target.value) }}
           />

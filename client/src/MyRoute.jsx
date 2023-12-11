@@ -9,20 +9,24 @@ import Pagesearchpa from "./clinicpages/Page-search-patient/Page-search-patient.
 import Clinichome from "./clinicpages/home/Clinichome.jsx";
 import Clienthome from "./ClientPages/Home/Clienthome.jsx";
 import EditInfo from "./ClientPages/editInfo/editInfo.jsx";
+import EditnDoc from "./clinicpages/Createdoc/EditnDoc.jsx"
+import ViewProfile from "./clinicpages/Page-search-patient/ViewProfile.jsx"
 const MyRoute = () => {
     return (
         <Router>
             <Routes>
                 <Route path="/" element={<Clienthome />} />
                 <Route path="/homeClinic" element={<Clinichome />} />
-                <Route path="/Profile" element={<Profile />} />
+                <Route path="/Profile/" element={<Profile />} />
                 <Route path="/EditInfo" element={<EditInfo/>}/>
                 <Route path="/ClientLogin" element={<Login_main />} />
                 <Route path="/Register" element={<Register />} />
                 <Route path="/ClinicLogin" element={<Login_main_clinic />} />
                 <Route path="/SearchDoc" element={<PageserchDoc />} />
                 <Route path="/EditDoc" element={<EditDoctor />} />
+                <Route path="/EditnDoc" element={<EditnDoc />} />
                 <Route path="/SearchClient" element={<Pagesearchpa />} />
+                <Route path="/ViewProfile" element={<ViewProfile/>} />
             </Routes>
         </Router>
     )

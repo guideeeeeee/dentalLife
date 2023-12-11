@@ -2,15 +2,65 @@ import "./Boxpatient.css";
 import ApModal from "../../ClientPages/modal/ApModal"
 import Profile from "../../../public/images-tabbar/profile.svg";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { setClientUuid } from "../../store/slices/ClinicSlice";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import Swal from "sweetalert2";
 function BoxPatient(props) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { dataPatient } = props;
   const [Modalstate, setModalstate] = useState(false);
   const [clientId,setID] = useState(null);
+  const goView = () =>{
+    dispatch(setClientUuid(dataPatient.dataAN));
+    navigate("/viewProfile");
+  }
   const handleEditButtonClick = (id) => {
     setID(id);
     setModalstate(true);
   };
   const imgSource = dataPatient.imgpatient ? dataPatient.imgpatient : Profile ;
+
+  const complete = () => {
+    // console.log(dataPatient.dataAD)
+    // console.log(dataPatient.datatime)
+    // console.log(dataPatient.dataAN)
+    try {
+      Swal.fire({
+        title: "Complete",
+        icon: "success"
+      }).then(async (result) => {
+        console.log(dataPatient.datatime);
+            if (result.isConfirmed) {
+                await axios.put("http://localhost:3001/api/complete", { date:dataPatient.dataAD, time: dataPatient.datatime ,uuid:dataPatient.dataAN})
+                    .then((res) => {
+                        if (res.data.status === "Cancel Complete") {
+                            console.log("complete")
+                        }
+                        else {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "Something went wrong!"
+                            });
+                        }
+                    })
+                Swal.fire({
+                    title: "Cancel!",
+                    text: "Your file has been cancel.",
+                    icon: "success"
+                }).then((res) => location.reload());
+            }
+        })
+
+    }
+    catch (err) {
+        console.error("Cannot cancel dentis")
+    }
+}
+
   return (
     <>
     
@@ -33,9 +83,8 @@ function BoxPatient(props) {
         </h6>
         <div className="edit" style={{ cursor: "pointer" }}>
             <button className="edit" onClick={handleEditButtonClick}>Booking</button>
-            <button className="edit">View</button>
-            <button className="edit">Complete</button>
-            <button className="edit">Cancel</button>
+            <button className="edit" onClick={goView}>View</button>
+            <button className="edit" onClick={complete}>Complete</button>
         </div>{" "}
         {/*ใส่ฟังชั่นทีหลัง*/}
       </div>

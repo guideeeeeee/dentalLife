@@ -1,6 +1,6 @@
 .boxAccordion{
     font-weight: bold;
-    font-size: 15px;
+    font-size: 18px;
     cursor: pointer;
 }
 
@@ -23,30 +23,51 @@
 .boxAccordion .row .date{
     display: block;
     margin-left: 15px;
-    width: 130px;
+    width: 160px;
 }
 .boxAccordion .row .time{
     display: block;
     margin-left: 30px;
-    width: 100px;
+    width: 150px;
 }
 
 .boxAccordion .row .place{
     margin-left: 20px;
-    width: 150px;
+    width: 170px;
 }
 
 .boxAccordion .row .status{
-    font-size: 13px;
+    font-size: 15px;
     margin-left: 30px;
     width: 120px;
 }
 
+.boxAccordion .row .wrong{
+    height: 18px;
+    margin-left: 0px;
+}
+
 .boxAccordion .row .according{
     height: 25px;
-    margin-left: 10px;
+    margin-left: 40px;
     margin-right: 5px;
 }
+
+.boxAccordion .row button.cancel{
+    border: hidden;
+    background-color: #ffffff;
+    cursor:pointer;
+    transition: 0.7s ease;
+ 
+}
+
+.boxAccordion .row button.cancel:hover{
+    border: hidden;
+    background-color: #ffffff;
+    transform: scale(1.1);
+ 
+}
+
 
 
 .boxAccordion .Treatment{

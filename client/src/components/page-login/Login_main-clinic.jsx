@@ -6,6 +6,7 @@ import "./Login_main.css";
 import Tabbar from "../../ClientPages/Home/Tabbar";
 import { useDispatch } from "react-redux";
 import { setClinic } from "../../store/slices/ClinicSlice";
+import Swal from "sweetalert2";
 function Login_main_clinic() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -24,7 +25,11 @@ function Login_main_clinic() {
           dispatch(setClinic(response.data.user))
           authentication(response,()=> navigate("/homeClinic"))
         } else {
-          alert("Login failed. " + response.data.message);
+          Swal.fire({
+            icon: "error",
+            title: "ไม่สามารถเข้าสู่ระบบได้",
+            text: "โปรดตรวจสอบอีเมลกับรหัสผ่านอีกครั้ง",
+          });
         }
       })
       .catch((error) => {

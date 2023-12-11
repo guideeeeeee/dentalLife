@@ -2,13 +2,13 @@ import "./EditDoctor.css";
 import Profile from "./component/profile.svg";
 import Tabbarclinic from "../Tabbarclinic/Tabbarclinic.jsx";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import axios from "axios";
-import { getClinicuuid } from "../../../service/authorize.jsx";
-function EditnDoc(props) {
-  const plabDoc = props;
+import {useSelector } from 'react-redux';
+import Swal from "sweetalert2";
+function EditnDoc() {
+  const plab = useSelector((state)=>state.Clinic.plab);
   /// set select Craft ///
-  
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [showOptions, setShowOptions] = useState(false);
    /// get craft ///
@@ -29,45 +29,21 @@ function EditnDoc(props) {
 
   /// dataform ///
 
-  const [formData, setFormData] = useState({
-    plab: null,
-    fname: null,
-    lname: null,
-    tel: null,
-    IDLine: null,
-    tservice: null,
-    S_exper: null,
-    CenClinic: getClinicuuid(),
-    language: null,
-    gYear1: null,
-    gYear2: null,
-    gYear3: null,
-    gS_exper1: null,
-    gS_exper2: null,
-    gS_exper3: null,
-    university1: null,
-    university2: null,
-    university3: null,
-    wduration1: null,
-    wduration2: null,
-    wduration3: null,
-    wduration4: null,
-    wduration5: null,
-    wS_exper1: null,
-    wS_exper2: null,
-    wS_exper3: null,
-    wS_exper4: null,
-    wS_exper5: null,
-    wlocation1: null,
-    wlocation2: null,
-    wlocation3: null,
-    wlocation4: null,
-    wlocation5: null,
-    gender: null,
-    ImgDoc:null,
-    fileDoc:null,
-  });
-
+  const [formData, setFormData] = useState({});
+  const fetchData = async () =>{
+    try {
+      const response = await axios.post("http://localhost:3001/api/fetchDent",{plab:plab});
+      console.log(response.data);
+      setFormData(
+        response.data[0]
+      )
+    } catch (error) {
+      console.error("Failed to fetch data:", error);
+    }
+  }
+  useEffect(() => {
+    fetchData(); // Call the function to initiate the fetch when the component mounts
+  }, []);
   /// show&clear image ///
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -111,20 +87,33 @@ function EditnDoc(props) {
   /// summit ///
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/api/regisDent",
-        formData
-      );
-      //const response1 = await axios.post("http://localhost:3001/api/uploadDent",Imgdata);
-      //console.log(response1.data)
-      console.log(response.data);
-      navigate("/SearchDoc");
-    } catch (error) {
-      console.error("Registration failed:", error.response ,error.response1);
+    if((formData.fname && formData.lname && formData.plab && formData.tservice )== null){
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "โปรดกรอกข้อมูลให้ครบถ้วน!",
+      });
+      return
+    }else{
+      try {
+        const response = await axios.put(
+          "http://localhost:3001/api/dentEdit",
+          formData
+        );
+        //const response1 = await axios.post("http://localhost:3001/api/uploadDent",Imgdata);
+        //console.log(response1.data)
+        console.log(response.data);
+        Swal.fire({
+          icon: "success",
+          title: "แก้ไขสำเร็จ",
+        });
+        navigate("/SearchDoc");
+      } catch (error) {
+        console.error("Registration failed:", error.response);
+      }
     }
+    
   };
-
   return (
     <>
       <div className="wpage">
@@ -173,7 +162,7 @@ function EditnDoc(props) {
                 name="plab"
                 value={formData.plab}
                 onChange={handleChange}
-                required
+                readOnly
               ></input>
             </div>
           </div>
@@ -236,7 +225,7 @@ function EditnDoc(props) {
                 </select>
               )}
 
-              <p>Selected options: {selectedOptions.join(", ")}</p>
+              <p>Selected options: {formData.tservice ? formData.tservice : selectedOptions.join(", ")}</p>
             </div>
           </div>
           <div className="part2">
