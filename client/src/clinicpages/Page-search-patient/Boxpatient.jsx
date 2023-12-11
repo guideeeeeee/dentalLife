@@ -5,20 +5,23 @@ import { useState } from "react";
 function BoxPatient(props) {
   const { dataPatient } = props;
   const [Modalstate, setModalstate] = useState(false);
-  const handleEditButtonClick = () => {
+  const [clientId,setID] = useState(null);
+  const handleEditButtonClick = (id) => {
+    setID(id);
     setModalstate(true);
   };
   const imgSource = dataPatient.imgpatient ? dataPatient.imgpatient : Profile ;
-  console.log(dataPatient)
   return (
+    <>
+    
+      {Modalstate && <ApModal setOpenModal={setModalstate} id={clientId} />}
     <div className="BoxPatient">
-      {Modalstate && <ApModal setOpenModal={setModalstate} id={dataPatient.dataAN} />}
       <div className="box">
         <img className="imgpatient" src={imgSource} />
         <h5>
           <div className="dataname">{dataPatient.dataname}</div>
           <div className="dataAN">Number AN :{dataPatient.dataAN}</div>
-          <div className="dataLA">Tell:{dataPatient.Tel}</div>
+          <div className="dataLA">Tel :{dataPatient.Tel}</div>
         </h5>
         <h6>
           <div className="dataAD">Appointment date :{dataPatient.dataAD}</div>
@@ -31,10 +34,12 @@ function BoxPatient(props) {
         <div className="edit" style={{ cursor: "pointer" }}>
             <button className="edit" onClick={handleEditButtonClick}>Booking</button>
             <button className="edit">View</button>
+            <button className="edit">Complete</button>
+            <button className="edit">Cancel</button>
         </div>{" "}
         {/*ใส่ฟังชั่นทีหลัง*/}
       </div>
-    </div>
+    </div></>
   );
 }
 

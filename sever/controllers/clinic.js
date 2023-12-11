@@ -177,12 +177,15 @@ exports.dataSheduling = (req, res, next) => {
   );
 };
 
-exports.clientbookinghistory = (req, res, next) => {
+exports.clientbookinghistory = (req,res,next)=>{
   db.execute(
-    "SELECT date, time, NameOfClinic, status, craft ,fname , lname, price,uuid FROM booking JOIN clinic ON booking.clinicID = clinic.ID_ClinicJOIN dentist ON booking.dentist = dentist.plabJOIN craft ON booking.craft = craft.nameOfcraft where uuid = ? ORDER BY date DESC;",
-    [req.body.clientuuid],
-    (err, results) => {
-      if (err) console.log(err);
+    "SELECT b.*, c.fname, c.lname, price, c.tel FROM booking b JOIN craft c2 ON b.craft = c2.nameOfcraft JOIN client c ON b.uuid = c.uuid WHERE   b.clinicID = ? and b.status = ?  ORDER BY b.date ASC;",
+    [
+      req.body.clinicuuid,
+      req.body.status
+    ],
+    (err,results)=>{
+      if(err) console.log(err);
       else res.send(results);
     }
   )
