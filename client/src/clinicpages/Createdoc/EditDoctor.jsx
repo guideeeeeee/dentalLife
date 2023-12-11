@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { getClinicuuid } from "../../../service/authorize.jsx";
+import Swal from "sweetalert2";
 function EditDoctor() {
-
   /// set select Craft ///
 
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -111,18 +111,29 @@ function EditDoctor() {
   /// summit ///
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/api/regisDent",
-        formData
-      );
-      //const response1 = await axios.post("http://localhost:3001/api/uploadDent",Imgdata);
-      //console.log(response1.data)
-      console.log(response.data);
-      navigate("/SearchDoc");
-    } catch (error) {
-      console.error("Registration failed:", error.response ,error.response1);
+    if((formData.fname && formData.lname && formData.plab && formData.tservice )== null){
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "โปรดกรอกข้อมูลให้ครบถ้วน!",
+      });
+      return
     }
+    else {
+      try {
+        const response = await axios.post(
+          "http://localhost:3001/api/regisDent",
+          formData
+        );
+        //const response1 = await axios.post("http://localhost:3001/api/uploadDent",Imgdata);
+        //console.log(response1.data)
+        console.log(response.data);
+        navigate("/SearchDoc");
+      } catch (error) {
+        console.error("Registration failed:", error.response ,error.response1);
+      }
+      }
+    
   };
 
   return (
