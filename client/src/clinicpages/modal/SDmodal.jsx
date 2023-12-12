@@ -5,7 +5,7 @@ import SDcalendar from './SDcalendar';
 import { getClinicuuid } from '../../../service/authorize';
 import axios from 'axios';
 
-
+import Swal from 'sweetalert2';
 function SDmodal({ setOpenClinicModal }) {
     const [dataform, setdata] = useState({
         namedent: null,
@@ -23,10 +23,19 @@ function SDmodal({ setOpenClinicModal }) {
             console.log(response.data);
             if (response.data.status === "Scheduling Complete") {
                 console.log("done");
-                alert("Complete");
                 setOpenClinicModal(false);
+                Swal.fire({
+                    title: "Good job!",
+                    text: "You clicked the button!",
+                    icon: "success"
+                  });
             } else {
-                alert(" fail " + response.data.message);
+                setOpenClinicModal(false);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "โปรดกรอกข้อมูลให้ครบ",
+                  });
             }
         } catch (error) {
             console.error("Error fetching data:", error);

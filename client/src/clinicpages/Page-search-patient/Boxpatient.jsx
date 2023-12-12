@@ -22,11 +22,8 @@ function BoxPatient(props) {
     setModalstate(true);
   };
   const imgSource = dataPatient.imgpatient ? dataPatient.imgpatient : Profile ;
-
+  console.log(dataPatient)
   const complete = () => {
-    // console.log(dataPatient.dataAD)
-    // console.log(dataPatient.datatime)
-    // console.log(dataPatient.dataAN)
     try {
       Swal.fire({
         title: "Complete",
@@ -47,11 +44,7 @@ function BoxPatient(props) {
                             });
                         }
                     })
-                Swal.fire({
-                    title: "Cancel!",
-                    text: "Your file has been cancel.",
-                    icon: "success"
-                }).then((res) => location.reload());
+                .then((res) => location.reload());
             }
         })
 
@@ -72,6 +65,7 @@ function BoxPatient(props) {
           <div className="dataname">{dataPatient.dataname}</div>
           <div className="dataAN">Number AN :{dataPatient.dataAN}</div>
           <div className="dataLA">Tel :{dataPatient.Tel}</div>
+          <div className="dataLA">Status :{dataPatient.status}</div>
         </h5>
         <h6>
           <div className="dataAD">Appointment date :{dataPatient.dataAD}</div>
@@ -84,7 +78,7 @@ function BoxPatient(props) {
         <div className="edit" style={{ cursor: "pointer" }}>
             <button className="edit" onClick={handleEditButtonClick}>Booking</button>
             <button className="edit" onClick={goView}>View</button>
-            <button className="edit" onClick={complete}>Complete</button>
+            {dataPatient.status === "Not Complete"&&<button className="edit" onClick={complete}>Complete</button>}
         </div>{" "}
         {/*ใส่ฟังชั่นทีหลัง*/}
       </div>

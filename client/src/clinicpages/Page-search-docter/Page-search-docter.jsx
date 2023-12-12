@@ -60,7 +60,7 @@ function PageserchDoc() {
             onChange={(event) => { setSearchText(event.target.value) }}
           />
           <img className='imgsearch' src='imagdentis\image 4.png' />
-          <button style={{ cursor: 'pointer' }}><img className='imgsearch' src='imagdentis\image 7.png' /></button>
+          
         </div>
       </center>
       <div className='app-grid'>

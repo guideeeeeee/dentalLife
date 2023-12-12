@@ -15,16 +15,17 @@ function Pagesearchpa() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.post("http://localhost:3001/api/clientbookinghistory", { clinicuuid: clinicuuid, status: "Not Complete" });
+        const res = await axios.post("http://localhost:3001/api/clientbookinghistory", { clinicuuid: clinicuuid });
         const fetchdata = res.data.map((res) => ({
           imgpatient: '',
-          dataname: res.fname + res.lname,
+          dataname: res.fname +" "+ res.lname,
           dataAN: res.uuid,
           Tel: res.tel,
           dataAD:  new Date(res.date).toLocaleDateString('en-CA'),
           datatime: res.time,
           dataRFA: res.craft,
-          dataprice: res.price
+          dataprice: res.price,
+          status:res.status
         }));
         console.log(fetchdata);
         setPatientData(fetchdata);
@@ -37,7 +38,7 @@ function Pagesearchpa() {
   }, [clinicuuid]);
 
   const filterpatient = patientData.filter((dataPatient) => {
-    return dataPatient.dataname.includes(searchText);
+    return dataPatient.dataname.includes(searchText) || dataPatient.dataAD.includes(searchText);
   });
 
   const dataPatientsElements = filterpatient.map((dataPatient, index) => {
@@ -59,7 +60,7 @@ function Pagesearchpa() {
             onChange={(event) => { setSearchText(event.target.value) }}
           />
           <img className='imgsearch' src='imagp\searchyellow.png' alt='search-icon' />
-          <button style={{ cursor: 'pointer' }}><img className='imgsearch' src='imagdentis\image 7.png' alt='filter-icon' /></button>{/*ปุ่มกรอง*/}
+          
         </div>
       </center>
 

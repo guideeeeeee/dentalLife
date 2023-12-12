@@ -22,13 +22,11 @@ module.exports.craft = function (req, res, next) {
 
 module.exports.scheduling = function (req, res, next) {
   db.execute(
-    "INSERT INTO scheduling VALUES(?,?,?,?,?)",
+    "INSERT INTO scheduling VALUES(?,?,?)",
     [
       req.body.IDClinic,
       req.body.NameDent,
-      req.body.craft,
       req.body.date,
-      req.body.time,
     ],
     function (err, results, fields) {
       if (err) {
@@ -187,10 +185,9 @@ exports.dataSheduling = (req, res, next) => {
 
 exports.clientbookinghistory = (req,res,next)=>{
   db.execute(
-    "SELECT b.*, c.fname, c.lname, price, c.tel FROM booking b JOIN craft c2 ON b.craft = c2.nameOfcraft JOIN client c ON b.uuid = c.uuid WHERE   b.clinicID = ? and b.status = ?  ORDER BY b.date ASC;",
+    "SELECT b.*, c.fname, c.lname, price, c.tel FROM booking b JOIN craft c2 ON b.craft = c2.nameOfcraft JOIN client c ON b.uuid = c.uuid WHERE   b.clinicID = ?   ORDER BY b.date desc;",
     [
       req.body.clinicuuid,
-      req.body.status
     ],
     (err,results)=>{
       if(err) console.log(err);

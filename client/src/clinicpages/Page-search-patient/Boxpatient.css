@@ -19,15 +19,22 @@
     transform: scale(0.995);
   }
 
-  
-  .BoxPatient div.edit{
+  /* .BoxPatient div.edit{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr ;
     column-gap: 3px;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
-}
+} */
+  .BoxPatient div.edit{
+    display: flex;
+    column-gap: 10px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+} 
+
 
 .BoxPatient button.edit{
     position: relative;
