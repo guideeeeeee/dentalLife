@@ -1,3 +1,8 @@
+Requirement for this project.
+- Node.js
+- Mysql workbench
+- Mysql server
+- Vscode
 after use git clone then
 for client
 1. cd client
