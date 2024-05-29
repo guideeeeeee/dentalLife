@@ -24,3 +24,5 @@ Manual Add table
 -  Craft => just add nameOfcraft and price
 -  Clinic => password we use Bcrypt salt 10
 run your password through the Bcrypt then add it to Password and save
+
+enjoyKub
